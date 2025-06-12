@@ -13,4 +13,4 @@ This repository contains data files and related scripts/notebooks used for testi
 > - `jgi/jgi_gold_organism_geo.csv`
 > - `nmdc/nmdc_biosample_geo_coordinates.csv`
 >
-> Please ensure the map web page has been updated accordingly before you move or delete any of these files.
+> Please ensure the map web page has been updated accordingly before you move or delete any of those files.

@@ -6,8 +6,8 @@ This repository contains data files and related scripts/notebooks used for testi
 
 > [!IMPORTANT]  
 > The map web page (in the [bertron](https://github.com/ber-data/bertron) repository) depends upon the following files in this repository remaining in their current locations:
-> - `emsl/all_emsl_samples.json`
-> - `emsl/latlon_project_ids.json`
+> - `emsl/map/all_emsl_samples.json`
+> - `emsl/map/latlon_project_ids.json`
 > - `ess-dive/ess_dive_packages.csv`
 > - `jgi/jgi_gold_biosample_geo.csv`
 > - `jgi/jgi_gold_organism_geo.csv`

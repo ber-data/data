@@ -68,3 +68,13 @@ ingest/
 - JSON format (list or dict) is specified above; future migrations to JSON Lines will be documented separately.
 - No records are to be split between files; each file is independently valid.
 - For more information or updates to these conventions, see [issue #9](https://github.com/ber-data/data/issues/9).
+
+## Tools and Scripts for Data Generation
+
+Tools, scripts, notebooks etc. for generating the data to be ingested should live in the contrib directory.
+Each data provider has its own subfolder within `contrib/`, e.g.:
+  - `contrib/emsl/`
+  - `contrib/jgi/`
+  - `contrib/ess-dive/`
+  - `contrib/nmdc/`
+

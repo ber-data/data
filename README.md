@@ -71,7 +71,7 @@ ingest/
 
 ## Tools and Scripts for Data Generation
 
-Tools, scripts, notebooks etc. for populating the data (for ingest into MongoDB) from each resouces should live in the contrib directory.
+Tools, scripts, notebooks etc. for populating the data (for ingest into MongoDB) from each resouce should live in the contrib directory.
 Each data provider has its own subfolder within `contrib/`, e.g.:
   - `contrib/emsl/`
   - `contrib/jgi/`

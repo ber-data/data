@@ -184,12 +184,15 @@ UPDATE gold_organism SET has_geodata = TRUE WHERE latitude IS NOT NULL AND longi
 -- Expect: 62,139
 
 -- Create views for CSV exports and queries to support data export.
+--DROP VIEW jgi_geodata;
 
 CREATE OR REPLACE VIEW jgi_geodata AS
 SELECT s.gold_id AS gold_study_id,
     o.gold_id AS gold_organism_id,
     b.gold_id AS gold_biosample_id,
     p.gold_id AS gold_project_id,
+    a.gold_id AS gold_analysis_id,
+    p.project_legacy_gold_id,
     b.has_geodata AS samp_has_geodata,
     b.latitude AS samp_lat,
     b.longitude AS samp_lon,
@@ -203,16 +206,47 @@ SELECT s.gold_id AS gold_study_id,
     p.ncbi_bioproject_accession,
     p.ncbi_biosample_accession,
     p.sra_experiment_ids,
-    p.jgi_award_dois,
     p.pmid_genome_pub,
-    p.project_funding,
-    p.project_name,
-    s.name,
-    s.description
+    p.pmid_other_pub,
+    p.project_funding AS seqproj_funding,
+    p.jgi_award_dois AS seqproj_award_dois,
+    p.project_name AS seqproj_name,
+    p.sequencing_strategy,
+    p.project_status,
+    p.sequencing_status,
+    -- p.contacts AS seqproj_contacts, -- JSONB column, unneccessary?
+    -- p.sequencing_centers, -- restricting to JGI anyway
+    -- p.jgi_utilization_status, -- presume everything is public
+    s.name AS study_name,
+    s.description AS study_desc,
+    b.name AS sample_name,
+    b.ncbi_tax_id AS sample_ncbi_tax_id,
+    b.ncbi_tax_name AS sample_ncbi_tax_name,
+    b.sample_collection_site,
+    b.sample_collection_date,
+    b.geographic_location AS sample_geographic_location,
+    b.ecosystem_path_id AS sample_ecosystem_path_id,
+    b.ecosystem AS sample_ecosystem,
+    b.ecosystem_category AS sample_ecosystem_category,
+    b.ecosystem_type AS sample_ecosystem_type,
+    b.ecosystem_subtype AS sample_ecosystem_subtype,
+    b.specific_ecosystem AS sample_specific_ecosystem,
+    -- any organism fields needed? these mostly come from external sources
+    a.jgi_award_dois AS analysis_award_dois,
+    a.its_analysis_id AS analysis_its_analysis_id,
+    a.its_analysis_taxon_id AS analysis_its_analysis_taxon_id,
+    a.completion_date AS analysis_completion_date,
+    a.genbank AS analysis_genbank, -- JSONB
+    -- a.sra_ids AS analysis_sra_ids, -- not populated
+    -- a.contacts AS analysis_contacts, -- JSONB column, unneccessary?
+    a.jgi_award_dois AS analysis_jgi_award_dois,
+    a.gene_count AS analysis_gene_count,
+    a.estimated_size AS analysis_estimated_size
    FROM gold_seqproj p
      LEFT JOIN gold_biosample b ON p.biosample_gold_id::bpchar = b.gold_id
      LEFT JOIN gold_organism o ON p.organism_gold_id::bpchar = o.gold_id
      LEFT JOIN gold_study s ON p.study_gold_id::bpchar = s.gold_id
+     LEFT JOIN gold_analysis a ON p.gold_id::bpchar = a.gold_id -- does this join work as expected with cardinality?
    WHERE p.is_jgi_project=TRUE;
 
 ----
@@ -252,5 +286,3 @@ SELECT s.gold_id AS gold_study_id,
 -- Alternatively, simply export the sequencing project IDs and prefer biosample locations over organism locations:
 \copy (WITH combined AS (SELECT gold_project_id AS gold_id,samp_lat AS latitude,samp_lon AS longitude,1 AS priority FROM jgi_geodata WHERE samp_has_geodata = TRUE UNION ALL SELECT gold_project_id AS gold_id,org_lat AS latitude,org_lon AS longitude,2 AS priority FROM jgi_geodata WHERE org_has_geodata = TRUE), ranked AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY gold_id ORDER BY priority) AS rn FROM combined) SELECT gold_id, latitude, longitude FROM ranked WHERE rn = 1) To 'C:\temp\jgi_seqproj_geo.csv' WITH DELIMITER ',' CSV HEADER;
 -- Expect: 70,331
-
--- TODO: Create view(s) to support schema-compliant JSON exports.

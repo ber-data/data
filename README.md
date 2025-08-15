@@ -31,8 +31,8 @@ To ensure consistency, efficient validation, and compatibility with the latest r
 ### File Format
 
 - All files must be formatted as JSON lists (i.e., data enclosed in square brackets).
-- Each file contains only complete records. No record may be split across files.
-- Each file must be independently valid against the current release schema.
+- Each file contains only complete records (entities). No record may be split across files.
+- Each record must be independently valid against the current release schema.
 - (Future consideration: [JSON Lines](https://jsonlines.org/) format may be adopted if more appropriate for downstream usage.)
 
 ### File Size and Splitting

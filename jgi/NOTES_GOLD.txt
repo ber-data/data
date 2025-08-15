@@ -1,17 +1,45 @@
-Filtering GOLD data for geographic locations.
-
-https://gold.jgi.doe.gov/downloads
-
-Download Excel:
-Public Studies/Biosamples/SPs/APs/Organisms Excel Last generated: 26 Feb, 2025 
-https://gold.jgi.doe.gov/download?mode=site_excel
-
-Export sheets as CSV UTF-8
-
+-- Filtering GOLD database for JGI records and geographic locations.
+--
+-- Latest GOLD database is available here:
+-- https://gold.jgi.doe.gov/downloads
+--
+-- Download Excel:
+-- Public Studies/Biosamples/SPs/APs/Organisms Excel Last generated: 26 Feb, 2025
+-- https://gold.jgi.doe.gov/download?mode=site_excel
+--
+-- Connect to local postgres database on Windows:
+-- Important: Set code page to support UTF-8.
+-- chcp 1252
+-- cd C:\temp
+-- C:\Progra~1\PostgreSQL\11\bin\psql.exe -U n4luser -d n4l_corpus
 --
 
+-- Create table descriptions and load tables from CSV files (after column headers are renamed).
 
+DROP TABLE gold_analysis;
 DROP TABLE gold_biosample;
+DROP TABLE gold_organism;
+DROP TABLE gold_seqproj;
+
+CREATE TABLE gold_analysis
+(
+  gold_id char(9),
+  name varchar,
+  type varchar,
+  its_analysis_id varchar,
+  its_analysis_taxon_id varchar,
+  completion_date date,
+  genbank JSONB,
+  sra_ids varchar,
+  gold_study_id varchar,
+  gold_organism_id varchar,
+  gold_project_id varchar,
+  contacts JSONB,
+  data_utilization varchar,
+  jgi_award_dois varchar,
+  gene_count integer,
+  estimated_size varchar
+);
 
 CREATE TABLE gold_biosample
 (
@@ -31,45 +59,6 @@ CREATE TABLE gold_biosample
   ecosystem_subtype varchar,
   specific_ecosystem varchar
 );
-
---COPY gold_biosample FROM 'C:\temp\goldData_biosample_20250226.csv' csv header;
-\copy gold_biosample FROM 'C:\temp\goldData_biosample_20250226.csv' DELIMITER ',' CSV HEADER
-
---
-DROP TABLE gold_seqproj;
-
-CREATE TABLE gold_seqproj
-(
-  gold_id char(9),
-  project_name varchar,
-  sequencing_strategy varchar,
-  its_proposal_id integer,
-  its_sequencing_project_id integer,
-  its_sample_id integer,
-  pmo_project_id integer,
-  ncbi_bioproject_accession varchar,
-  ncbi_biosample_accession varchar,
-  sra_experiment_ids varchar,
-  pmid_genome_pub varchar,
-  pmid_other_pub varchar,
-  project_status varchar,
-  sequencing_status varchar,
-  sequencing_centers varchar,
-  project_funding varchar,
-  project_legacy_gold_id varchar,
-  study_gold_id varchar,
-  organism_gold_id varchar,
-  biosample_gold_id varchar,
-  contacts varchar,
-  jgi_utilization_status varchar,
-  jgi_award_dois varchar
-);
-
-\copy gold_seqproj FROM 'C:\temp\goldData_seqproj_20250226.csv' DELIMITER ',' CSV HEADER
-
---
-
-DROP TABLE gold_organism;
 
 CREATE TABLE gold_organism
 (
@@ -125,102 +114,146 @@ CREATE TABLE gold_organism
   cultured varchar
 );
 
+CREATE TABLE gold_seqproj
+(
+  gold_id char(9),
+  project_name varchar,
+  sequencing_strategy varchar,
+  its_proposal_id integer,
+  its_sequencing_project_id integer,
+  its_sample_id integer,
+  pmo_project_id integer,
+  ncbi_bioproject_accession varchar,
+  ncbi_biosample_accession varchar,
+  sra_experiment_ids varchar,
+  pmid_genome_pub varchar,
+  pmid_other_pub varchar,
+  project_status varchar,
+  sequencing_status varchar,
+  sequencing_centers varchar,
+  project_funding varchar,
+  project_legacy_gold_id varchar,
+  study_gold_id varchar,
+  organism_gold_id varchar,
+  biosample_gold_id varchar,
+  contacts varchar,
+  jgi_utilization_status varchar,
+  jgi_award_dois varchar
+);
+
+-- On Windows command line:
+--COPY gold_analysis FROM 'C:\temp\goldData_analysis_20250226.csv' csv header;
+--COPY gold_biosample FROM 'C:\temp\goldData_biosample_20250226.csv' csv header;
+--COPY gold_organism FROM 'C:\temp\goldData_organism_20250226.csv' csv header;
+--COPY gold_seqproj FROM 'C:\temp\goldData_seqproj_20250226.csv' csv header;
+
+-- In psql:
+\copy gold_analysis FROM 'C:\temp\goldData_analysis_20250226.csv' DELIMITER ',' CSV HEADER
+\copy gold_biosample FROM 'C:\temp\goldData_biosample_20250226.csv' DELIMITER ',' CSV HEADER
 \copy gold_organism FROM 'C:\temp\goldData_organism_20250226.csv' DELIMITER ',' CSV HEADER QUOTE '"'
+\copy gold_seqproj FROM 'C:\temp\goldData_seqproj_20250226.csv' DELIMITER ',' CSV HEADER
 
-
-SELECT COUNT(*) FROM gold_organism WHERE latitude IS NOT NULL AND longitude IS NOT NULL;
-62139 (of 521808)
-
-SELECT COUNT(*) FROM gold_biosample WHERE latitude IS NOT NULL AND longitude IS NOT NULL;
-208443 (of 212598)
-
-SELECT COUNT(*) FROM gold_seqproj p,gold_biosample b WHERE p.biosample_gold_id=b.gold_id;
-216954 (of 584673)
-SELECT COUNT(*) FROM gold_seqproj p WHERE p.biosample_gold_id IS NOT NULL;
-216959 (of 584673)
-
-SELECT p.gold_id AS gold_proj_id,b.gold_id AS gold_biosample_id FROM gold_seqproj p,gold_biosample b WHERE p.biosample_gold_id=b.gold_id;
-
-
-SELECT COUNT(*) FROM gold_seqproj p
- LEFT JOIN gold_biosample b ON p.biosample_gold_id=b.gold_id
- LEFT JOIN gold_organism o ON p.organism_gold_id=o.gold_id
-;
-584673
-
-SELECT p.*,b.*,o.* FROM gold_seqproj p
- LEFT JOIN gold_biosample b ON p.biosample_gold_id=b.gold_id
- LEFT JOIN gold_organism o ON p.organism_gold_id=o.gold_id
-LIMIT 2
-;
-
-SELECT p.gold_id AS gold_project_id,b.gold_id AS gold_biosample_id,o.gold_id AS gold_organism_id,
-  p.project_legacy_gold_id,
-  b.latitude AS samp_lat,b.longitude AS samp_lon,o.latitude AS org_lat,o.longitude AS org_lon,
-  p.its_proposal_id,
-  p.its_sequencing_project_id,
-  p.its_sample_id,
-  p.pmo_project_id,
-  p.ncbi_bioproject_accession,
-  p.ncbi_biosample_accession,
-  p.sra_experiment_ids,
-  p.jgi_award_dois,
-  p.pmid_genome_pub,
-  p.pmid_other_pub,
-  p.sequencing_centers,
-  p.project_funding,
-  p.project_name
- FROM gold_seqproj p
-  LEFT JOIN gold_biosample b ON p.biosample_gold_id=b.gold_id
-  LEFT JOIN gold_organism o ON p.organism_gold_id=o.gold_id
-LIMIT 2
-;
-
+-- Create a column to filter out non-JGI sequencing project records.
+-- The following records (166,530 of 584,673 as of February 16, 2025) are considered to be JGI:
 --
+-- DOE Joint Genome Institute (JGI)
+-- DOE Joint Genome Institute (JGI)|454 Life Sciences
+-- DOE Joint Genome Institute (JGI)|Australian National University
+-- DOE Joint Genome Institute (JGI)|GATC-Biotech AG, Konstanz, Germany
+-- DOE Joint Genome Institute (JGI)|454 Life Sciences
+-- DOE Joint Bioenergy Institute (JBEI)|DOE Joint Genome Institute (JGI)
 
-DROP VIEW gold_accession_geo;
+-- PostgreSQL 11
+ALTER TABLE gold_seqproj ADD COLUMN is_jgi_project boolean NOT NULL DEFAULT FALSE;
+UPDATE gold_seqproj SET is_jgi_project = TRUE WHERE sequencing_centers ILIKE '%DOE Joint Genome Institute (JGI)%';
 
-CREATE OR REPLACE VIEW gold_accession_geo AS
-SELECT p.gold_id AS gold_project_id,b.gold_id AS gold_biosample_id,o.gold_id AS gold_organism_id,
-  p.project_legacy_gold_id,
-  b.latitude AS samp_lat,b.longitude AS samp_lon,o.latitude AS org_lat,o.longitude AS org_lon,
-  p.its_proposal_id,
-  p.its_sequencing_project_id,
-  p.its_sample_id,
-  p.pmo_project_id,
-  p.ncbi_bioproject_accession,
-  p.ncbi_biosample_accession,
-  p.sra_experiment_ids,
-  p.jgi_award_dois,
-  p.pmid_genome_pub,
-  p.pmid_other_pub,
-  p.sequencing_centers,
-  p.project_funding,
-  p.project_name
- FROM gold_seqproj p
-  LEFT JOIN gold_biosample b ON p.biosample_gold_id=b.gold_id
-  LEFT JOIN gold_organism o ON p.organism_gold_id=o.gold_id
-;
+-- PostgreSQL 12+
+--ALTER TABLE gold_seqproj ADD COLUMN is_jgi_project boolean
+--  GENERATED ALWAYS AS (sequencing_centers ILIKE '%DOE Joint Genome Institute (JGI)%') STORED;
 
-SELECT COUNT(*) FROM gold_accession_geo;
-584673
+-- Speed up the query.
+CREATE INDEX idx_gold_seqproj_is_jgi_project_true ON gold_seqproj (is_jgi_project) WHERE is_jgi_project = TRUE;
 
-SELECT COUNT(*) FROM gold_accession_geo WHERE samp_lat IS NOT NULL AND samp_lon IS NOT NULL AND org_lat IS NOT NULL AND org_lon IS NOT NULL;
-0
+-- Add a column to check for geographic data.
+ALTER TABLE gold_biosample ADD COLUMN has_geodata boolean NOT NULL DEFAULT FALSE;
+UPDATE gold_biosample SET has_geodata = TRUE WHERE latitude IS NOT NULL AND longitude IS NOT NULL;
+-- Expect: 208,443
 
-SELECT COUNT(*) FROM gold_accession_geo WHERE samp_lat IS NOT NULL AND samp_lon IS NOT NULL;
-212790
+ALTER TABLE gold_organism ADD COLUMN has_geodata boolean NOT NULL DEFAULT FALSE;
+UPDATE gold_organism SET has_geodata = TRUE WHERE latitude IS NOT NULL AND longitude IS NOT NULL;
+-- Expect: 62,139
 
-SELECT COUNT(*) FROM gold_accession_geo WHERE org_lat IS NOT NULL AND org_lon IS NOT NULL;
-67076
+-- Create views for CSV exports and queries to support data export.
 
-SELECT COUNT(*) FROM gold_accession_geo WHERE (samp_lat IS NOT NULL AND samp_lon IS NOT NULL) OR (org_lat IS NOT NULL AND org_lon IS NOT NULL);
-279866
+CREATE OR REPLACE VIEW jgi_geodata AS
+SELECT s.gold_id AS gold_study_id,
+    o.gold_id AS gold_organism_id,
+    b.gold_id AS gold_biosample_id,
+    p.gold_id AS gold_project_id,
+    b.has_geodata AS samp_has_geodata,
+    b.latitude AS samp_lat,
+    b.longitude AS samp_lon,
+    o.has_geodata AS org_has_geodata,
+    o.latitude AS org_lat,
+    o.longitude AS org_lon,
+    p.its_proposal_id,
+    p.its_sequencing_project_id,
+    p.its_sample_id,
+    p.pmo_project_id,
+    p.ncbi_bioproject_accession,
+    p.ncbi_biosample_accession,
+    p.sra_experiment_ids,
+    p.jgi_award_dois,
+    p.pmid_genome_pub,
+    p.project_funding,
+    p.project_name,
+    s.name,
+    s.description
+   FROM gold_seqproj p
+     LEFT JOIN gold_biosample b ON p.biosample_gold_id::bpchar = b.gold_id
+     LEFT JOIN gold_organism o ON p.organism_gold_id::bpchar = o.gold_id
+     LEFT JOIN gold_study s ON p.study_gold_id::bpchar = s.gold_id
+   WHERE p.is_jgi_project=TRUE;
 
-\copy (SELECT * FROM gold_accession_geo WHERE (samp_lat IS NOT NULL AND samp_lon IS NOT NULL) OR (org_lat IS NOT NULL AND org_lon IS NOT NULL)) To 'C:\temp\jgi_accessions_geo.csv' WITH DELIMITER ',' CSV HEADER
+----
+-- Test queries
+--
+--SELECT COUNT(*) FROM jgi_geodata;
+---- Expect: 166,530 (number of JGI sequencing projects)
+--
+--SELECT COUNT(DISTINCT(gold_id)) FROM gold_biosample WHERE has_geodata;
+---- Expect: 208,443 (this includes biosamples not associated with JGI sequencing projects)
+--
+--SELECT COUNT(*) FROM jgi_geodata WHERE samp_has_geodata;
+---- Expect: 55,888 (these are the JGI sequencing projects that have geographic data for the biosample)
+--
+--SELECT COUNT(DISTINCT(gold_biosample_id)) FROM jgi_geodata WHERE samp_has_geodata;
+---- Expect: 54,336 (these are the unique biosamples that are associated with JGI sequencing projects and have geographic data)
+--
+--SELECT COUNT(DISTINCT(gold_id)) FROM gold_organism WHERE has_geodata;
+---- Expect: 62,139 (this includes organisms not associated with JGI sequencing projects)
+--
+--SELECT COUNT(*) FROM jgi_geodata WHERE org_has_geodata;
+---- Expect: 14,443 (these are the JGI sequencing projects that have geographic data for the organism)
+--
+--SELECT COUNT(DISTINCT(gold_organism_id)) FROM jgi_geodata WHERE org_has_geodata;
+---- Expect: 9,503 (these are the unique organisms that are associated with JGI sequencing projects and have geographic data)
+--
+----
 
-\copy (SELECT gold_id,latitude,longitude FROM gold_biosample WHERE latitude IS NOT NULL AND longitude IS NOT NULL) To 'C:\temp\jgi_gold_biosample_geo.csv' WITH DELIMITER ',' CSV HEADER
-208443
+-- Export geographic data for Map interface as CSV UTF-8
 
-\copy (SELECT gold_id,latitude,longitude FROM gold_organism WHERE latitude IS NOT NULL AND longitude IS NOT NULL) To 'C:\temp\jgi_gold_organism_geo.csv' WITH DELIMITER ',' CSV HEADER
-62139
+--\copy (SELECT * FROM jgi_geodata WHERE samp_has_geodata OR org_has_geodata) To 'C:\temp\jgi_accessions_geo.csv' WITH DELIMITER ',' CSV HEADER
+
+-- These two files support the map interface. However, they are not restricted by JGI sequencing project so they contain non-JGI records.
+-- Original version:
+--\copy (SELECT DISTINCT(gold_id),latitude,longitude FROM gold_biosample WHERE has_geodata=TRUE) To 'C:\temp\jgi_gold_biosample_geo.csv' WITH DELIMITER ',' CSV HEADER
+---- Expect: 208,443
+--\copy (SELECT DISTINCT(gold_id),latitude,longitude FROM gold_organism WHERE has_geodata=TRUE) To 'C:\temp\jgi_gold_organism_geo.csv' WITH DELIMITER ',' CSV HEADER
+---- Expect: 62,139
+
+-- New version (for JGI sequencing projects only):
+\copy (SELECT DISTINCT(gold_biosample_id) AS gold_id,samp_lat AS latitude,samp_lon AS longitude FROM jgi_geodata WHERE samp_has_geodata=TRUE) To 'C:\temp\jgi_gold_biosample_geo.csv' WITH DELIMITER ',' CSV HEADER
+-- Expect: 54,366
+\copy (SELECT DISTINCT(gold_organism_id) AS gold_id,org_lat AS latitude,org_lon AS longitude FROM jgi_geodata WHERE org_has_geodata=TRUE) To 'C:\temp\jgi_gold_organism_geo.csv' WITH DELIMITER ',' CSV HEADER
+-- Expect: 9,503

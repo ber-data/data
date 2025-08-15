@@ -243,17 +243,14 @@ SELECT s.gold_id AS gold_study_id,
 
 -- Export geographic data for Map interface as CSV UTF-8
 
---\copy (SELECT * FROM jgi_geodata WHERE samp_has_geodata OR org_has_geodata) To 'C:\temp\jgi_accessions_geo.csv' WITH DELIMITER ',' CSV HEADER
-
--- These two files support the map interface. However, they are not restricted by JGI sequencing project so they contain non-JGI records.
--- Original version:
---\copy (SELECT DISTINCT(gold_id),latitude,longitude FROM gold_biosample WHERE has_geodata=TRUE) To 'C:\temp\jgi_gold_biosample_geo.csv' WITH DELIMITER ',' CSV HEADER
----- Expect: 208,443
---\copy (SELECT DISTINCT(gold_id),latitude,longitude FROM gold_organism WHERE has_geodata=TRUE) To 'C:\temp\jgi_gold_organism_geo.csv' WITH DELIMITER ',' CSV HEADER
----- Expect: 62,139
-
--- New version (for JGI sequencing projects only):
+-- Export unique biosamples and organsims associated JGI sequencing projects and have geographic data.
 \copy (SELECT DISTINCT(gold_biosample_id) AS gold_id,samp_lat AS latitude,samp_lon AS longitude FROM jgi_geodata WHERE samp_has_geodata=TRUE) To 'C:\temp\jgi_gold_biosample_geo.csv' WITH DELIMITER ',' CSV HEADER
 -- Expect: 54,366
 \copy (SELECT DISTINCT(gold_organism_id) AS gold_id,org_lat AS latitude,org_lon AS longitude FROM jgi_geodata WHERE org_has_geodata=TRUE) To 'C:\temp\jgi_gold_organism_geo.csv' WITH DELIMITER ',' CSV HEADER
 -- Expect: 9,503
+--
+-- Alternatively, simply export the sequencing project IDs and prefer biosample locations over organism locations:
+\copy (WITH combined AS (SELECT gold_project_id AS gold_id,samp_lat AS latitude,samp_lon AS longitude,1 AS priority FROM jgi_geodata WHERE samp_has_geodata = TRUE UNION ALL SELECT gold_project_id AS gold_id,org_lat AS latitude,org_lon AS longitude,2 AS priority FROM jgi_geodata WHERE org_has_geodata = TRUE), ranked AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY gold_id ORDER BY priority) AS rn FROM combined) SELECT gold_id, latitude, longitude FROM ranked WHERE rn = 1) To 'C:\temp\jgi_seqproj_geo.csv' WITH DELIMITER ',' CSV HEADER;
+-- Expect: 70,331
+
+-- TODO: Create view(s) to support schema-compliant JSON exports.

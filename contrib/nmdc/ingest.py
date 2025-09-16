@@ -175,7 +175,7 @@ class BiosampleMapper(nmdc.Biosample):
     def get_entity(self) -> bertron.Entity:
         """Returns an `Entity` instance—as defined in the BERtron schema.
 
-        Reference: https://ber-data.github.io/bertron-schema/EntityType/
+        Reference: https://ber-data.github.io/bertron-schema/Entity/
         """
         params: dict = {
             "ber_data_source": bertron.BERSourceType.NMDC,

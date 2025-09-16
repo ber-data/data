@@ -1,14 +1,16 @@
+import json
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
+import httpx
+import typer
+from linkml_runtime.linkml_model import SlotDefinition
+from linkml_runtime.utils.formatutils import camelcase
 from nmdc_schema import nmdc
+from nmdc_schema.get_nmdc_view import ViewGetter
 from rich import print
 from schema.datamodel import bertron_schema_pydantic as bertron
 from typing_extensions import Annotated
-import httpx
-import json
-import typer
-
 
 # Create a CLI application.
 app = typer.Typer(
@@ -72,6 +74,16 @@ class BiosampleMapper(nmdc.Biosample):
 
     Reference: https://microbiomedata.github.io/nmdc-schema/Biosample/
     """
+
+    def __init__(self, *args, **kwargs):
+        if "nmdc_schema_view" in kwargs:
+            self._nmdc_schema_view = kwargs.pop("nmdc_schema_view")
+        else:
+            self._nmdc_schema_view = ViewGetter().get_view()
+        self._nmdc_schema_enum_names = {
+            camelcase(e) for e in self._nmdc_schema_view.all_enums().keys()
+        }
+        super().__init__(*args, **kwargs)
 
     def get_name(self) -> Optional[str]:
         """Returns the `samp_name` of this Biosample, if it has one.
@@ -159,21 +171,101 @@ class BiosampleMapper(nmdc.Biosample):
         TODO: Add support for additional properties.
         """
         properties = []
-        if isinstance(self.collection_date, nmdc.TimestampValue):
-            raw_value = self.collection_date.has_raw_value
-            if raw_value is not None:
-                # TODO: Document the origin of the attribute values.
-                #       (I copied them from a sample data file in the
-                #       `bertron-schema` repo). Where are they defined?
+
+        def _append_property(slot_definition: SlotDefinition, slot_value: Any) -> None:
+            """Append one or more properties to the `properties` list, based on the given slot
+            definition and value.
+            """
+
+            # If the slot value is a list, append a property for each item in the list.
+            if isinstance(slot_value, list):
+                for item in slot_value:
+                    _append_property(slot_definition, item)
+                return
+
+            # The attribute dictionary is common to all property types.
+            attribute = {
+                "id": f"nmdc:{slot_definition.name}",
+                "label": slot_definition.title
+                if slot_definition.title
+                else slot_definition.name,
+            }
+            # If the value is a simple primitive type, stringify it and use it as a raw_value.
+            if isinstance(slot_value, (str, int, float, bool)):
                 properties.append(
                     {
-                        "attribute": {
-                            "id": "MIXS:0000011",
-                            "label": "collection date",
-                        },
-                        "raw_value": raw_value,
+                        "attribute": attribute,
+                        "raw_value": str(slot_value),
                     }
                 )
+            # If the value is a QuantityValue, map as many fields as possible to the property.
+            elif isinstance(slot_value, nmdc.QuantityValue):
+                properties.append(
+                    {
+                        "attribute": attribute,
+                        "raw_value": slot_value.has_raw_value,
+                        "maximum_numeric_value": slot_value.has_maximum_numeric_value,
+                        "minimum_numeric_value": slot_value.has_minimum_numeric_value,
+                        "numeric_value": slot_value.has_numeric_value,
+                        "unit": str(slot_value.has_unit),
+                    }
+                )
+            # If the value is a ControlledIdentifiedTermValue, map the term ID to the property's
+            # value.
+            elif isinstance(slot_value, nmdc.ControlledIdentifiedTermValue):
+                properties.append(
+                    {
+                        "attribute": attribute,
+                        "value": slot_value.term.id,
+                    }
+                )
+            # If the value is a ControlledTermValue, map the term ID to the property's value if the
+            # term exists.
+            elif isinstance(slot_value, nmdc.ControlledTermValue):
+                if slot_value.term is not None:
+                    properties.append(
+                        {
+                            "attribute": attribute,
+                            "value": slot_value.term.id,
+                        }
+                    )
+            # If the value is a GeolocationValue, do nothing because we handle lat_lon separately,
+            # via get_coordinates().
+            elif isinstance(slot_value, nmdc.GeolocationValue):
+                pass
+            # If the value is an AttributeValue subclass not handled above, map its raw_value to
+            # the property's raw_value.
+            elif isinstance(slot_value, nmdc.AttributeValue):
+                properties.append(
+                    {
+                        "attribute": attribute,
+                        "raw_value": slot_value.has_raw_value,
+                    }
+                )
+            # If the value is an enum, map its string representation to the property's raw_value.
+            elif slot_value.__class__.__name__ in self._nmdc_schema_enum_names:
+                properties.append(
+                    {
+                        "attribute": attribute,
+                        "raw_value": str(slot_value),
+                    }
+                )
+            # If we don't know how to handle the slot value, print a warning.
+            else:
+                print(
+                    f"[yellow]Warning: Unhandled slot '{slot_definition.name}' of type '{slot_value.__class__.__name__}'[/yellow]"
+                )
+
+        # Iterate over all Biosample slots defined in the NMDC Schema and append properties for
+        # those that have values in this Biosample instance.
+        for slot_definition in self._nmdc_schema_view.class_induced_slots(
+            self.class_name
+        ):
+            slot_value = getattr(self, slot_definition.name, None)
+            if not slot_value:
+                continue
+            _append_property(slot_definition, slot_value)
+
         return properties
 
     def get_entity(self) -> bertron.Entity:
@@ -274,10 +366,13 @@ def main(
             )
         biosamples = fetcher.biosamples
 
+    # Get a `SchemaView` of the NMDC Schema, which can be used during the mapping process.
+    nmdc_schema_view = ViewGetter().get_view()
+
     # Create a `bertron.Entity` instance corresponding to each biosample.
     entity_instances: list[bertron.Entity] = []
     for biosample in biosamples:
-        mapper = BiosampleMapper(**biosample)
+        mapper = BiosampleMapper(**biosample, nmdc_schema_view=nmdc_schema_view)
         entity_instance = mapper.get_entity()
         entity_instances.append(entity_instance)
 

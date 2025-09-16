@@ -4,6 +4,3 @@
 # Ignore tool cache directories.
 /.mypy_cache
 /.ruff_cache
-
-# Ignore local "cache" of biosamples, used during development.
-/.biosamples.json

@@ -57,45 +57,75 @@ Note: The following usage string was copy/pasted from the output of `$ python in
 
 Prerequisite(s):
 
-- Python 3.12 is installed
-- [uv](https://docs.astral.sh/uv/) is installed (only required if you will be
-  running the `uvx` commands shown below)
+- [uv](https://docs.astral.sh/uv/) is installed
 
-Set up a Python virtual environment.
+#### Set up Python virtual environment
 
-```sh
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --no-cache-dir -r requirements.txt
+You can set up a Python virtual environment by issuing the following command **from
+the current directory** (i.e. the directory containing this `README.md` file):
+
+```shell
+uv sync
 ```
 
-> I included `--no-cache-dir` in the installation command in an attempt to
-> reduce the chances that any developer ends up using an out-of-date version
-> of the BERtron schema, whose version number does not yet change from one
-> "release" to the next.
+That command will:
+
+1. **Create a Python virtual environment** at `.venv` (if one doesn't already
+   exist there)
+2. **Install all dependencies** described in `uv.lock` into that Python virtual environment
+3. Uninstall all dependencies _not_ described in `uv.lock` from that Python
+   virtual environment
+
+#### Activate Python virtual environment
+
+Now that you have set up a Python virtual environment, you can activate it by
+issuing the following command:
+
+```shell
+source .venv/bin/activate
+```
+
+> Note: Once you're ready to _deactivate_ the Python virtual environment,
+> you can do so by running `$ deactivate`.
 
 Run the ingest script.
 
 ```sh
-python ingest.py
+uv run ingest.py
 ```
 
-Format code.
+#### Format code
+
+We use [`ruff`](https://docs.astral.sh/ruff/formatter/) as the code _formatter_.
+
+You can _check_ the code's format by running:
 
 ```sh
-uvx ruff format
+uv run ruff format --diff
 ```
 
-Lint code.
+You can _format_ the code by running:
 
 ```sh
-uvx ruff check
+uv run ruff format
 ```
 
-Deactivate the Python virtual environment.
+#### Lint code
 
-```sh
-deactivate
+We also use [`ruff`](https://docs.astral.sh/ruff/linter/) as the code _linter_.
+
+You can _check_ the code's compliance with the "linter rules" by running:
+
+```shell
+uv run ruff check
 ```
 
-</details>
+#### Check types
+
+We use [mypy](https://mypy.readthedocs.io/en/stable/) as the static type checker.
+
+You can perform static type checking by running:
+
+```shell
+uv run mypy
+```

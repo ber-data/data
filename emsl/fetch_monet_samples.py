@@ -43,6 +43,7 @@ for sample in sample_data_from_api:
         ],
         "description": "MONet Soil Core",
         "id": sample["id"], # UUID for samplingActivity table in Analysis DB (Core B metadata)
+        "name": "EMSL:MONET_" + sample["proposal_id"] + "_" + sample["sampling_set"],
         "uri": "https://sc-data.emsl.pnnl.gov/monet",
         "properties": [
             {

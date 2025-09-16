@@ -196,7 +196,10 @@ class BiosampleMapper(nmdc.Biosample):
 
 def main():
     # Fetch all biosamples from the NMDC Runtime API.
-    if False:
+    # TODO: I included this "toggle" switch for switching between (a) fetching data
+    #       from the Internet and (b) loading data from the local filesystem. Make
+    #       this a command-line option.
+    if True:
         fetcher = Fetcher()
         fetcher.fetch_all_biosamples()
 

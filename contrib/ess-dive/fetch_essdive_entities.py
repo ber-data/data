@@ -22,7 +22,7 @@ For datasets without spatial coverage (dataset entities):
 - "ESS-DIVE" -> ber_data_source
 - "dataset" -> entity_type
 - dataset.name -> name
-- id#latlon -> id
+- id#coordinates.latitude,coordinates.longitude_<sequence_number> -> id
 - dataset.description -> description
 - dataset.@id -> alt_ids
 - dataset.alternateName -> alt_names
@@ -85,25 +85,31 @@ class EssDiveEntityFetcher:
                 {"Accept": "application/json", "Content-Type": "application/json"}
             )
 
-    def get_all_public_datasets(
-        self, page_size: int = 100, max_pages: Optional[int] = None
-    ) -> List[Dict[str, Any]]:
+    def process_datasets_by_page(
+        self,
+        page_size: int = 100,
+        max_pages: Optional[int] = None,
+        process_callback: callable = None,
+    ) -> Tuple[int, int]:
         """
-        Fetch all public datasets from ESS-DIVE API with pagination.
+        Process public datasets from ESS-DIVE API page by page without loading all into memory.
 
         Args:
             page_size: Number of datasets to fetch per request (max 100)
             max_pages: Maximum number of pages to fetch (for testing/dry-run)
+            process_callback: Function to call for each dataset, receives (dataset, page_info)
 
         Returns:
-            List of dataset summary objects
+            Tuple of (total_datasets_processed, total_entities_created)
         """
-        all_datasets = []
         row_start = 1
         pages_fetched = 0
+        total_datasets_processed = 0
+        total_entities_created = 0
+        total_datasets = None
 
         if max_pages:
-            print(f"Dry run mode: fetching maximum {max_pages} page(s)")
+            print(f"Dry run mode: processing maximum {max_pages} page(s)")
 
         while True:
             try:
@@ -138,16 +144,45 @@ class EssDiveEntityFetcher:
                     print("No more datasets found.")
                     break
 
-                all_datasets.extend(results)
+                # Get total count on first page
+                if total_datasets is None:
+                    total_datasets = data.get("total", 0)
+                    print(f"Total datasets available: {total_datasets}")
+
+                # Process each dataset in this page
+                for i, dataset in enumerate(results):
+                    dataset_num = total_datasets_processed + i + 1
+                    print(
+                        f"Processing dataset {dataset_num}/{total_datasets}: {dataset.get('id', 'Unknown ID')}"
+                    )
+
+                    try:
+                        if process_callback:
+                            entities_created = process_callback(
+                                dataset,
+                                {
+                                    "page": pages_fetched + 1,
+                                    "dataset_in_page": i + 1,
+                                    "total_processed": dataset_num,
+                                    "total_available": total_datasets,
+                                },
+                            )
+                            total_entities_created += entities_created
+                    except Exception as e:
+                        print(
+                            f"Error processing dataset {dataset.get('id', 'Unknown')}: {e}"
+                        )
+                        continue
+
                 pages_fetched += 1
+                total_datasets_processed += len(results)
 
-                # Check if we've got all datasets
-                total = data.get("total", 0)
-                current_count = len(all_datasets)
+                print(
+                    f"Processed {total_datasets_processed} of {total_datasets} total datasets"
+                )
 
-                print(f"Fetched {current_count} of {total} total datasets")
-
-                if current_count >= total:
+                # Check if we've processed all datasets
+                if total_datasets_processed >= total_datasets:
                     break
 
                 # Move to next page
@@ -163,10 +198,12 @@ class EssDiveEntityFetcher:
                 print(f"Unexpected response format: {e}")
                 break
 
-        print(f"Total datasets fetched: {len(all_datasets)}")
+        print(f"Total datasets processed: {total_datasets_processed}")
+        print(f"Total entities created: {total_entities_created}")
         if max_pages:
             print(f"Dry run completed after {pages_fetched} page(s)")
-        return all_datasets
+
+        return total_datasets_processed, total_entities_created
 
     def get_dataset_metadata(self, dataset_version: str) -> Optional[Dict[str, Any]]:
         """
@@ -295,6 +332,7 @@ class EssDiveEntityFetcher:
         dataset_version: str,
         dataset: Dict[str, Any],
         spatial_coverage: Dict[str, Any],
+        sequence_number: Optional[int] = None,
     ) -> Entity:
         """
         Create a Bertron site entity from a dataset with spatial coverage.
@@ -303,6 +341,7 @@ class EssDiveEntityFetcher:
             dataset_version: The dataset version identifier
             dataset: The dataset metadata
             spatial_coverage: The spatial coverage information
+            sequence_number: Optional sequence number for multiple sites
 
         Returns:
             Bertron site entity using Pydantic model
@@ -319,12 +358,15 @@ class EssDiveEntityFetcher:
                 latitude=center_point[0], longitude=center_point[1]
             )
 
-        # Create unique ID for site entity using coordinates
+        # Create unique ID for site entity using coordinates and optional sequence number
         # Create entity ID based on whether coordinates are available
         if coordinates:
-            entity_id = (
-                f"{dataset_version}#{coordinates.latitude},{coordinates.longitude}"
-            )
+            if sequence_number is not None:
+                entity_id = f"{dataset_version}#{coordinates.latitude},{coordinates.longitude}_{sequence_number}"
+            else:
+                entity_id = (
+                    f"{dataset_version}#{coordinates.latitude},{coordinates.longitude}"
+                )
         else:
             entity_id = dataset_version
 
@@ -386,11 +428,11 @@ class EssDiveEntityFetcher:
         if spatial_coverage:
             # Handle spatial coverage - could be a list or single object
             if isinstance(spatial_coverage, list):
-                # Create a site entity for each spatial coverage area
-                for coverage in spatial_coverage:
+                # Create a site entity for each spatial coverage area with sequence numbers
+                for i, coverage in enumerate(spatial_coverage):
                     if coverage.get("geo"):  # Only if it has geographic data
                         entity = self.create_site_entity(
-                            dataset_version, full_metadata, coverage
+                            dataset_version, full_metadata, coverage, sequence_number=i
                         )
                         entities.append(entity)
             else:
@@ -500,9 +542,10 @@ class EssDiveEntityFetcher:
         output_prefix: Optional[str] = None,
         page_size: int = 100,
         max_pages: Optional[int] = None,
+        debug_metadata: bool = False,
     ) -> Tuple[List[Entity], List[str]]:
         """
-        Fetch all public datasets and convert them to Bertron entities.
+        Fetch all public datasets and convert them to Bertron entities using memory-efficient processing.
 
         Args:
             output_prefix: Optional prefix for output files (e.g., "essdive" -> "essdive_00001.json")
@@ -512,61 +555,189 @@ class EssDiveEntityFetcher:
         Returns:
             Tuple of (all entities, list of created file paths)
         """
-        print("Starting ESS-DIVE entity fetch...")
+        print("Starting memory-efficient ESS-DIVE entity fetch...")
 
-        # Get all public datasets
-        datasets = self.get_all_public_datasets(
-            page_size=page_size, max_pages=max_pages
-        )
+        # Initialize file writer if output is requested
+        writer = None
+        if output_prefix:
+            writer = ChunkedEntityWriter(output_prefix, self.max_file_size_bytes)
 
-        if not datasets:
-            print("No datasets found!")
-            return [], []
+        # Track entities for summary (but not accumulate all in memory)
+        total_entities = []
+        entity_counts = {"site": 0, "dataset": 0}
 
-        all_entities = []
+        # Debug metadata collection
+        debug_datasets = [] if debug_metadata else None
 
-        print(f"Processing {len(datasets)} datasets...")
-
-        for i, dataset in enumerate(datasets, 1):
-            print(
-                f"Processing dataset {i}/{len(datasets)}: {dataset.get('id', 'Unknown ID')}"
-            )
-
+        def process_dataset_callback(
+            dataset: Dict[str, Any], page_info: Dict[str, Any]
+        ) -> int:
+            """Callback function to process each dataset and optionally write to files."""
             try:
                 entities = self.process_dataset(dataset)
-                all_entities.extend(entities)
+
+                # Collect dataset metadata for debug if requested
+                if debug_metadata and debug_datasets is not None:
+                    # Get full metadata that was fetched during processing
+                    dataset_version = dataset.get("id")
+                    if dataset_version:
+                        full_metadata = self.get_dataset_metadata(dataset_version)
+                        if full_metadata:
+                            debug_datasets.append(full_metadata)
+
+                # Update counters
+                for entity in entities:
+                    if EntityType.site in entity.entity_type:
+                        entity_counts["site"] += 1
+                    if EntityType.dataset in entity.entity_type:
+                        entity_counts["dataset"] += 1
+
+                # If we're writing to files, add to writer
+                if writer:
+                    writer.add_entities(entities)
+                else:
+                    # If not writing to files, keep in memory for return value
+                    total_entities.extend(entities)
 
                 # Rate limiting
                 time.sleep(0.2)
 
+                return len(entities)
+
             except Exception as e:
                 print(f"Error processing dataset {dataset.get('id', 'Unknown')}: {e}")
-                continue
+                return 0
 
-        print(
-            f"Created {len(all_entities)} Bertron entities from {len(datasets)} datasets"
+        # Process datasets page by page
+        total_datasets_processed, total_entities_created = (
+            self.process_datasets_by_page(
+                page_size=page_size,
+                max_pages=max_pages,
+                process_callback=process_dataset_callback,
+            )
         )
 
-        # Save to files if prefix provided
+        # Finalize file writing if applicable
         created_files = []
-        if output_prefix:
-            try:
-                created_files = self._write_entities_chunked(
-                    all_entities, output_prefix
-                )
+        if writer:
+            created_files = writer.finalize()
 
-                if len(created_files) == 1:
-                    print(f"Entities saved to {created_files[0]}")
-                else:
-                    print(f"Entities split into {len(created_files)} files:")
-                    for file_path in created_files:
-                        print(f"  {file_path}")
+            if len(created_files) == 1:
+                print(f"Entities saved to {created_files[0]}")
+            else:
+                print(f"Entities split into {len(created_files)} files:")
+                for file_path in created_files:
+                    print(f"  {file_path}")
 
-            except Exception as e:
-                print(f"Error saving entities: {e}")
-                created_files = []
+        print(
+            f"Created {total_entities_created} Bertron entities from {total_datasets_processed} datasets"
+        )
+        print(f"Site entities: {entity_counts['site']}")
+        print(f"Dataset entities: {entity_counts['dataset']}")
 
-        return all_entities, created_files
+        # Save debug metadata if requested
+        if debug_metadata and debug_datasets:
+            debug_filename = (
+                f"{output_prefix}_00001_debug_metadata.json"
+                if output_prefix
+                else "debug_00001_metadata.json"
+            )
+            with open(debug_filename, "w", encoding="utf-8") as f:
+                json.dump(debug_datasets, f, indent=2, ensure_ascii=False)
+            print(f"Debug metadata saved to: {debug_filename}")
+            print(f"Debug datasets collected: {len(debug_datasets)}")
+
+        # Return total_entities for backward compatibility, but when writing files
+        # we return a list with the entity counts for the summary
+        if writer:
+            # Create a minimal list for the summary without storing all entities
+            summary_entities = []
+            for _ in range(entity_counts["site"]):
+                summary_entity = type(
+                    "Entity", (), {"entity_type": [EntityType.site]}
+                )()
+                summary_entities.append(summary_entity)
+            for _ in range(entity_counts["dataset"]):
+                summary_entity = type(
+                    "Entity", (), {"entity_type": [EntityType.dataset]}
+                )()
+                summary_entities.append(summary_entity)
+            return summary_entities, created_files
+        else:
+            return total_entities, created_files
+
+
+class ChunkedEntityWriter:
+    """Helper class to write entities to chunked files in real-time."""
+
+    def __init__(self, output_prefix: str, max_file_size_bytes: int = 25 * 1024 * 1024):
+        self.output_prefix = output_prefix
+        self.max_file_size_bytes = max_file_size_bytes
+        self.current_batch = []
+        self.current_size = 0
+        self.file_counter = 1
+        self.created_files = []
+        self.array_overhead = 4  # "[\n]\n"
+
+    def add_entities(self, entities: List[Entity]) -> None:
+        """Add entities to the current batch, creating new files as needed."""
+        for entity in entities:
+            self._add_single_entity(entity)
+
+    def _add_single_entity(self, entity: Entity) -> None:
+        """Add a single entity to the current batch."""
+        # Convert entity to dictionary
+        entity_dict = entity.model_dump(exclude_none=True)
+
+        # Estimate size of this entity when serialized
+        entity_json = json.dumps(entity_dict, ensure_ascii=False, separators=(",", ":"))
+        entity_size = len(entity_json.encode("utf-8"))
+
+        # Add comma and newline overhead if not the first item
+        if self.current_batch:
+            entity_size += 2  # ",\n"
+
+        # Check if adding this entity would exceed the size limit
+        projected_size = self.current_size + entity_size + self.array_overhead
+
+        if projected_size > self.max_file_size_bytes and self.current_batch:
+            # Save current batch and start new one
+            self._save_current_batch()
+            self.current_batch = [entity_dict]
+            self.current_size = entity_size
+            self.file_counter += 1
+        else:
+            # Add to current batch
+            self.current_batch.append(entity_dict)
+            self.current_size += entity_size
+
+    def _save_current_batch(self) -> None:
+        """Save the current batch to a file."""
+        if not self.current_batch:
+            return
+
+        filename = f"{self.output_prefix}_{self.file_counter:05d}.json"
+
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(self.current_batch, f, indent=2, ensure_ascii=False)
+
+        # Get actual file size
+        file_size = os.path.getsize(filename)
+        file_size_mb = file_size / (1024 * 1024)
+
+        print(
+            f"Created {filename}: {len(self.current_batch)} entities, {file_size_mb:.2f} MB"
+        )
+
+        self.created_files.append(filename)
+        self.current_batch = []
+        self.current_size = 0
+
+    def finalize(self) -> List[str]:
+        """Save any remaining entities and return list of created files."""
+        if self.current_batch:
+            self._save_current_batch()
+        return self.created_files
 
 
 def main():
@@ -613,6 +784,11 @@ def main():
         action="store_false",
         help="Skip validation of output files",
     )
+    parser.add_argument(
+        "--debug-metadata",
+        action="store_true",
+        help="Save dataset metadata to debug file for inspection",
+    )
 
     args = parser.parse_args()
 
@@ -634,6 +810,7 @@ def main():
             output_prefix=args.output,
             page_size=args.page_size,
             max_pages=args.dry_run_pages,
+            debug_metadata=args.debug_metadata,
         )
 
         print("\nSummary:")

@@ -68,13 +68,6 @@ for sample in sample_data_from_api:
             },
             {
                 "attribute": {
-                    "id": "MIXS:0000019",
-                    "label": "depth"
-                },
-                "raw_value": str(sample['soil_metadata']['depth'].get('raw', 'unknown'))
-            },
-            {
-                "attribute": {
                     "id": "MIXS:0000012",
                     "label": "env_broad_scale"
                 },
@@ -93,5 +86,3 @@ for sample in sample_data_from_api:
 print(f"Processed {count} samples.")
 with open(output_file, 'w') as f:
     json.dump(ber_output, f, indent=2)
-
-        

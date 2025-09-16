@@ -1,0 +1,16 @@
+# Requirements for ESS-DIVE data fetching and validation scripts
+# Install bertron-schema from the main branch for Pydantic models
+git+https://github.com/ber-data/bertron-schema.git@main
+
+# Core dependencies for API requests and data processing
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Schema validation dependencies
+jsonschema>=4.17.0
+
+# Optional: For development and testing
+pytest>=7.0.0
+
+# Note: The fetch_essdive_entities.py script now uses Pydantic models
+# from the bertron-schema package to create properly validated Entity objects

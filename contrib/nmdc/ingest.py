@@ -74,9 +74,13 @@ class BiosampleMapper(nmdc.Biosample):
     """
 
     def get_name(self) -> Optional[str]:
-        """Returns the `name` of this Biosample, if it has one."""
-        if isinstance(self.name, str):
-            return self.name
+        """Returns the `samp_name` of this Biosample, if it has one.
+        
+        Note: I opted to use this instead of `name`, after noticing that some `name` values seemed to me
+              to be duplicates of `description` values.
+        """
+        if isinstance(self.samp_name, str):
+            return self.samp_name
         return None
 
     def get_description(self) -> Optional[str]:
@@ -199,7 +203,7 @@ def main():
     # TODO: I included this "toggle" switch for switching between (a) fetching data
     #       from the Internet and (b) loading data from the local filesystem. Make
     #       this a command-line option.
-    if True:
+    if False:
         fetcher = Fetcher()
         fetcher.fetch_all_biosamples()
 

@@ -1,23 +1,22 @@
-"""
-This script can be used to fetch data from the NMDC database (via the NMDC Runtime API [1]),
-validate it against the NMDC Schema [2], transform it into a shape that is compliant with the
-BERtron Schema [3], and write it to a file on the filesystem. That file's contents can then be
-loaded into an instance of the BERtron database.
-
-References:
-1. https://api.microbiomedata.org
-2. https://microbiomedata.github.io/nmdc-schema/
-3. https://github.com/ber-data/bertron-schema
-
-The dependencies are documented in `requirements.txt`.
-"""
-
+from pathlib import Path
 from typing import Optional
 
 from nmdc_schema import nmdc
+from rich import print
 from schema.datamodel import bertron_schema_pydantic as bertron
+from typing_extensions import Annotated
 import httpx
 import json
+import typer
+
+
+# Create a CLI application.
+app = typer.Typer(
+    name="ingest",
+    no_args_is_help=True,  # treats the absence of args like the `--help` arg
+    add_completion=False,  # hides the shell completion options from `--help` output
+    rich_markup_mode="markdown",  # enables use of Markdown in docstrings and CLI help
+)
 
 
 class Fetcher:
@@ -37,7 +36,8 @@ class Fetcher:
         page_cursor: Optional[str] = "*"  # the "*" cursor refers to the first page
         while True:
             print(
-                f"Fetching page number {page_num} via cursor '{page_cursor}'", end=": "
+                f"Fetching page number {page_num} via cursor `{page_cursor}`: ",
+                end="",
             )
             response = httpx.get(
                 f"{self.api_base_url}/biosamples",
@@ -75,7 +75,7 @@ class BiosampleMapper(nmdc.Biosample):
 
     def get_name(self) -> Optional[str]:
         """Returns the `samp_name` of this Biosample, if it has one.
-        
+
         Note: I opted to use this instead of `name`, after noticing that some `name` values seemed to me
               to be duplicates of `description` values.
         """
@@ -122,13 +122,13 @@ class BiosampleMapper(nmdc.Biosample):
         alt_ids.update(set(self.emsl_biosample_identifiers or []))
         alt_ids.update(set(self.igsn_biosample_identifiers or []))
         alt_ids.update(set(self.alternative_identifiers or []))
-        return list(alt_ids)
+        return sorted(list(alt_ids))
 
     def get_alt_names(self) -> list[str]:
         """Returns a list of alternative names, if any exist, for this Biosample."""
         alt_names = set()
         alt_names.update(set(self.alternative_names or []))
-        return list(alt_names)
+        return sorted(list(alt_names))
 
     def get_uri(self) -> str:
         """Returns a URI for this Biosample."""
@@ -198,43 +198,100 @@ class BiosampleMapper(nmdc.Biosample):
         return bertron.Entity(**params)
 
 
-def main():
-    # Fetch all biosamples from the NMDC Runtime API.
-    # TODO: I included this "toggle" switch for switching between (a) fetching data
-    #       from the Internet and (b) loading data from the local filesystem. Make
-    #       this a command-line option.
-    if False:
+@app.command()
+def main(
+    # Reference: https://typer.tiangolo.com/tutorial/parameter-types/path/
+    cache_input_file_path: Annotated[
+        Optional[Path],
+        typer.Option(
+            "--cache-from",
+            dir_okay=False,
+            writable=False,
+            readable=True,
+            resolve_path=True,
+            help=(
+                "Path to a JSON file previously created via `--cache-to`, from which you want "
+                "the script to load NMDC data. If not specified, the script will download NMDC "
+                "data from the Internet."
+            ),
+        ),
+    ] = None,
+    cache_output_file_path: Annotated[
+        Optional[Path],
+        typer.Option(
+            "--cache-to",
+            dir_okay=False,
+            writable=True,
+            readable=False,
+            resolve_path=True,
+            help=(
+                "Path at which you want the script to create a JSON file containing the NMDC data "
+                "the script downloads from the Internet. That path can then be specified to the "
+                "script via `--cache-from` on a subsequent run, in order to avoid downloading the "
+                "same data again from the Internet."
+            ),
+        ),
+    ] = None,
+    result_output_file_path: Annotated[
+        Path,
+        typer.Option(
+            "-o",
+            "--output",
+            dir_okay=False,
+            writable=True,
+            readable=False,
+            resolve_path=True,
+            help=(
+                "Path at which you want the JSON file containing BERtron data to be created."
+            ),
+        ),
+    ] = Path("./nmdc_00001.json"),
+):
+    """
+    Fetch NMDC data, transform it into BERtron-compliant data, and write it to a JSON file.
+
+    This script fetches biosample data from the NMDC Runtime API (or loads it from a file,
+    if specified), validates it against the NMDC Schema, transforms it into a shape that is
+    compliant with the BERtron Schema, then writes it to a JSON file.
+    """
+
+    # If a cache input file path was specified, read the biosamples from there.
+    # Otherwise, fetch them from the NMDC Runtime API.
+    if isinstance(cache_input_file_path, Path):
+        with open(cache_input_file_path, "r") as file:
+            biosamples = json.load(file)
+        print(f"Loaded {len(biosamples)} biosamples from: {cache_input_file_path}")
+    else:
         fetcher = Fetcher()
         fetcher.fetch_all_biosamples()
 
-        with open(".biosamples.json", "w") as f:
-            json.dump(fetcher.biosamples, f, indent=2)
-        print(f"Wrote {len(fetcher.biosamples)} biosamples to: all_biosamples.json")
+        # If a cache output file path was specified, dump the fetched biosamples to that file.
+        if isinstance(cache_output_file_path, Path):
+            with open(cache_output_file_path, "w") as file:
+                json.dump(fetcher.biosamples, file, indent=2)
+            print(
+                f"Cached {len(fetcher.biosamples)} biosamples in: {cache_output_file_path}"
+            )
         biosamples = fetcher.biosamples
-    else:
-        # Read biosamples back from the JSON file
-        with open(".biosamples.json", "r") as f:
-            biosamples = json.load(f)
-        print(f"Loaded {len(biosamples)} biosamples from: all_biosamples.json")
 
-    # For each biosample fetched from the NMDC Runtime API, make a `bertron.Entity`.
-    entities = []
+    # Create a `bertron.Entity` instance corresponding to each biosample.
+    entity_instances: list[bertron.Entity] = []
     for biosample in biosamples:
         mapper = BiosampleMapper(**biosample)
         entity_instance = mapper.get_entity()
-        entities.append(entity_instance)
+        entity_instances.append(entity_instance)
 
-    # Make a list of dictionaries, each one representing a `bertron.Entity` instance.
+    # Create a Python dictionary corresponding to each `bertron.Entity` instance.
     entity_dicts: list[dict] = [
-        entity.model_dump(exclude_none=True) for entity in entities
+        entity.model_dump(exclude_none=True) for entity in entity_instances
     ]
 
-    # Write the list of dictionaries (as an array of JSON objects) to a JSON file.
-    with open("nmdc_00001.json", "w") as f:
-        json.dump(entity_dicts, f, indent=2)
+    # Write the list of Python dictionaries (as an array of JSON objects) to the result output file.
+    with open(result_output_file_path, "w") as file:
+        json.dump(entity_dicts, file, indent=2)
 
-    print(f"Wrote {len(entities)} entities to: entities.json")
+    print(f"Wrote {len(entity_instances)} entities to: {result_output_file_path}")
 
 
 if __name__ == "__main__":
-    main()
+    app()

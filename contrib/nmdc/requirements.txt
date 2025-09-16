@@ -6,3 +6,14 @@ bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@4ee7dfda1f53
 
 # We use `nmdc-schema` to validate that Python objects conform to the NMDC schema.
 nmdc-schema == 11.10.0
+
+# We use `typer` as a CLI application framework, and we use `rich` to format
+# console output. Installing `typer` installs `rich` automatically, but I don't
+# like importing transitive dependencies, so I list `rich` here explicitly.
+# Docs: https://typer.tiangolo.com/
+typer == 0.17.4
+rich == 14.1.0
+
+# We depend on the `typing-extensions` package's `Annotated` class,
+# which we use to define metadata on CLI arguments/options.
+typing-extensions >= 4.15.0

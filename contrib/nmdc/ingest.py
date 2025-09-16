@@ -1,8 +1,8 @@
 """
-This script can be used to EXTRACT data from the NMDC database (via the NMDC Runtime API [1]),
-validate it against the NMDC Schema [2], TRANSFORM it into a shape that is compliant with the
+This script can be used to fetch data from the NMDC database (via the NMDC Runtime API [1]),
+validate it against the NMDC Schema [2], transform it into a shape that is compliant with the
 BERtron Schema [3], and write it to a file on the filesystem. That file's contents can then be
-LOADED into a the BERtron database.
+loaded into an instance of the BERtron database.
 
 References:
 1. https://api.microbiomedata.org

@@ -3,7 +3,7 @@
 -- Latest GOLD database is available here:
 -- https://gold.jgi.doe.gov/downloads
 --
--- Download Excel:
+-- Download Excel (0.25 GB Excel file):
 -- Public Studies/Biosamples/SPs/APs/Organisms Excel Last generated: 26 Feb, 2025
 -- https://gold.jgi.doe.gov/download?mode=site_excel
 --
@@ -286,3 +286,11 @@ SELECT s.gold_id AS gold_study_id,
 -- Alternatively, simply export the sequencing project IDs and prefer biosample locations over organism locations:
 \copy (WITH combined AS (SELECT gold_project_id AS gold_id,samp_lat AS latitude,samp_lon AS longitude,1 AS priority FROM jgi_geodata WHERE samp_has_geodata = TRUE UNION ALL SELECT gold_project_id AS gold_id,org_lat AS latitude,org_lon AS longitude,2 AS priority FROM jgi_geodata WHERE org_has_geodata = TRUE), ranked AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY gold_id ORDER BY priority) AS rn FROM combined) SELECT gold_id, latitude, longitude FROM ranked WHERE rn = 1) To 'C:\temp\jgi_seqproj_geo.csv' WITH DELIMITER ',' CSV HEADER;
 -- Expect: 70,331
+
+-- Export a record for testing.
+\copy (SELECT * FROM jgi_geodata WHERE (samp_has_geodata = TRUE OR org_has_geodata = TRUE) LIMIT 2) To 'C:\temp\jgi_seqproj_test.csv' WITH DELIMITER ',' CSV HEADER;
+
+-- Export unique JGI GOLD Biosample IDs for Mark Miller.
+\copy (SELECT DISTINCT(gold_biosample_id) FROM gold_combined_tables_jgi ORDER BY gold_biosample_id ASC) To 'C:\temp\jgi_biosample_ids.csv' WITH DELIMITER ',' CSV HEADER;
+
+\copy (SELECT DISTINCT(gold_study_id) FROM gold_combined_tables_jgi ORDER BY gold_study_id ASC) To 'C:\temp\jgi_goldstudyids.csv' WITH DELIMITER ',' CSV HEADER;

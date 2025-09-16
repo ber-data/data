@@ -1,6 +1,11 @@
 # NMDC
 
-This script fetches data from the NMDC Runtime API, transforms it into BERtron-compliant data, and writes the latter to a JSON file.
+This script fetches data from the NMDC Runtime API, transforms it into BERtron-compliant data, and writes it to a JSON file.
+
+```mermaid
+graph LR
+  api[NMDC Runtime API] -- Biosamples --> script[ingest.py] -- Entities --> json[JSON file]
+```
 
 ## Usage
 
@@ -43,12 +48,18 @@ Note: The following usage string was copy/pasted from the output of `$ python in
 
 ## Development
 
+<!-- markdownlint-disable -->
+<details>
+<summary>Show/hide developer docs</summary>
+<!-- markdownlint-enable -->
+
 ### Quick start
 
 Prerequisite(s):
 
 - Python 3.12 is installed
-- [uv](https://docs.astral.sh/uv/) is installed (only required if you will be running the `uvx` commands shown below)
+- [uv](https://docs.astral.sh/uv/) is installed (only required if you will be
+  running the `uvx` commands shown below)
 
 Set up a Python virtual environment.
 
@@ -58,7 +69,10 @@ source .venv/bin/activate
 python -m pip install --no-cache-dir -r requirements.txt
 ```
 
-> I included `--no-cache-dir` in the installation command in an attempt to reduce the chances that any developer ends up using an out-of-date version of the BERtron schema, whose version number does not yet change from one "release" to the next.
+> I included `--no-cache-dir` in the installation command in an attempt to
+> reduce the chances that any developer ends up using an out-of-date version
+> of the BERtron schema, whose version number does not yet change from one
+> "release" to the next.
 
 Run the ingest script.
 
@@ -83,3 +97,5 @@ Deactivate the Python virtual environment.
 ```sh
 deactivate
 ```
+
+</details>

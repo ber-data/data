@@ -1,4 +1,6 @@
 import json
+from enum import Enum
+from io import StringIO
 from pathlib import Path
 from typing import Any, Optional
 
@@ -9,6 +11,7 @@ from linkml_runtime.utils.formatutils import camelcase
 from nmdc_schema import nmdc
 from nmdc_schema.get_nmdc_view import ViewGetter
 from rich import print
+from rich.progress import Progress
 from schema.datamodel import bertron_schema_pydantic as bertron
 from typing_extensions import Annotated
 
@@ -290,6 +293,81 @@ class BiosampleMapper(nmdc.Biosample):
         return bertron.Entity(**params)
 
 
+class Dumper:
+    """Methods that can be used to dump `bertron.Entity` instances to JSON files."""
+
+    @staticmethod
+    def dump_entities_to_json_files(
+        entities: list[bertron.Entity],
+        output_dir: Path = Path("../../ingest/nmdc/"),  # TODO: Remove default value
+        target_file_size_bytes: int = 25_000_000,
+    ) -> None:
+        """Dump the given list of `bertron.Entity` instances to JSON files."""
+
+        class Token(str, Enum):
+            """Tokens that can be used when generating JSON strings."""
+
+            OPEN = "[\n"
+            DELIMIT = ",\n"
+            CLOSE = "\n]"
+
+        # Count the number of entities, so we can show a percent completion.
+        num_entities_total = len(entities)
+
+        # Iterate through the `Entity` instances, dumping each one in JSON format into a buffer.
+        # When the buffer contains at least one dumped instance and the size of the buffer exceeds
+        # `target_file_size_bytes`, terminate the JSON array in the buffer and dump the buffer to
+        # a file. Then, create a new buffer and repeat the process with the next entity and file.
+        file_number = 1
+        buffer = StringIO()
+        num_entities_in_buffer = 0
+        with Progress(refresh_per_second=1) as progress:
+            task = progress.add_task(
+                "Dumping entities as JSON...", total=num_entities_total
+            )
+            for entity_num, entity in enumerate(
+                entities, start=1
+            ):  # use a 1-based index
+                progress.update(task, advance=1)
+
+                # If we're about to write the buffer's first entity, start the JSON array.
+                if num_entities_in_buffer == 0:
+                    buffer.write(Token.OPEN.value)
+
+                # Write this entity to the buffer.
+                buffer.write(entity.model_dump_json(indent=2))
+                num_entities_in_buffer += 1
+
+                # If either (a) this was the final entity in our list or (b) the buffer size is
+                # at or above our threshold, end the JSON array, dump the buffer to the file,
+                # and prepare a new buffer and filename.
+                buffer_size_bytes = len(buffer.getvalue().encode("utf-8"))
+                if (
+                    entity_num == num_entities_total
+                    or buffer_size_bytes >= target_file_size_bytes
+                ):
+                    buffer.write(Token.CLOSE.value)
+                    result_output_file_path = Path(
+                        output_dir / f"nmdc_{file_number:05d}.json"
+                    )
+                    with open(result_output_file_path, "w") as file:
+                        file.write(buffer.getvalue())
+                    print(
+                        f"Dumped {num_entities_in_buffer} entities "
+                        f"({buffer_size_bytes} bytes) "
+                        f"to: {result_output_file_path}"
+                    )
+                    buffer = StringIO()
+                    num_entities_in_buffer = 0
+                    file_number += 1
+                else:
+                    # Add an element delimiter and continue to add entities to the buffer.
+                    buffer.write(Token.DELIMIT.value)
+
+            # Remove the progress bar.
+            progress.remove_task(task)
+
+
 @app.command()
 def main(
     # Reference: https://typer.tiangolo.com/tutorial/parameter-types/path/
@@ -324,20 +402,33 @@ def main(
             ),
         ),
     ] = None,
-    result_output_file_path: Annotated[
+    result_output_dir_path: Annotated[
         Path,
         typer.Option(
-            "-o",
-            "--output",
-            dir_okay=False,
+            "--output-dir",
+            dir_okay=True,
             writable=True,
             readable=False,
             resolve_path=True,
             help=(
-                "Path at which you want the JSON file containing BERtron data to be created."
+                "Path to directory in which you want the JSON file(s) containing BERtron entities "
+                "to be created."
             ),
         ),
-    ] = Path("./nmdc_00001.json"),
+    ] = Path("./"),
+    target_output_file_size: Annotated[
+        int,
+        typer.Option(
+            "--target-file-size",
+            min=1,
+            help=(
+                "Number of bytes you want each JSON file to contain. Each time the script writes "
+                "an additional BERtron entity to a file, it will compare the file's size to this "
+                "number, in order to determine whether to continue growing the file or start a "
+                "new file. This is not a hard limit."
+            ),
+        ),
+    ] = 25_000_000,
 ):
     """
     Fetch NMDC data, transform it into BERtron-compliant data, and write it to a JSON file.
@@ -376,16 +467,12 @@ def main(
         entity_instance = mapper.get_entity()
         entity_instances.append(entity_instance)
 
-    # Create a Python dictionary corresponding to each `bertron.Entity` instance.
-    entity_dicts: list[dict] = [
-        entity.model_dump(exclude_none=True) for entity in entity_instances
-    ]
-
-    # Write the list of Python dictionaries (as an array of JSON objects) to the result output file.
-    with open(result_output_file_path, "w") as file:
-        json.dump(entity_dicts, file, indent=2)
-
-    print(f"Wrote {len(entity_instances)} entities to: {result_output_file_path}")
+    # Dump the `bertron.Entity` instances to JSON file(s).
+    Dumper.dump_entities_to_json_files(
+        entities=entity_instances,
+        output_dir=result_output_dir_path,
+        target_file_size_bytes=target_output_file_size,
+    )
 
 
 if __name__ == "__main__":

@@ -30,7 +30,9 @@ dependencies = [
 dev = [
     # We use `mypy` for static type checking.
     "mypy",
-
+    # We use `pyinstrument` for performance profiling.
+    # Docs: https://pyinstrument.readthedocs.io/en/latest/guide.html#profile-a-python-cli-command
+    "pyinstrument>=5.1.1",
     # We use `ruff` for linting and formatting of Python source code.
     "ruff >= 0.13.0",
 ]

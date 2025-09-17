@@ -29,20 +29,42 @@ Note: The following usage string was copy/pasted from the output of `$ python in
  JSON file.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --cache-from          FILE  Path to a JSON file previously created via       │
-│                             --cache-to, from which you want the script to    │
-│                             load NMDC data. If not specified, the script     │
-│                             will download NMDC data from the Internet.       │
-│ --cache-to            FILE  Path at which you want the script to create a    │
-│                             JSON file containing the NMDC data the script    │
-│                             downloads from the Internet. That path can then  │
-│                             be specified to the script via --cache-from on a │
-│                             subsequent run, in order to avoid downloading    │
-│                             the same data again from the Internet.           │
-│ --output      -o      FILE  Path at which you want the JSON file containing  │
-│                             BERtron data to be created.                      │
-│                             [default: nmdc_00001.json]                       │
-│ --help                      Show this message and exit.                      │
+│ --cache-from              FILE                  Path to a JSON file          │
+│                                                 previously created via       │
+│                                                 --cache-to, from which you   │
+│                                                 want the script to load NMDC │
+│                                                 data. If not specified, the  │
+│                                                 script will download NMDC    │
+│                                                 data from the Internet.      │
+│ --cache-to                FILE                  Path at which you want the   │
+│                                                 script to create a JSON file │
+│                                                 containing the NMDC data the │
+│                                                 script downloads from the    │
+│                                                 Internet. That path can then │
+│                                                 be specified to the script   │
+│                                                 via --cache-from on a        │
+│                                                 subsequent run, in order to  │
+│                                                 avoid downloading the same   │
+│                                                 data again from the          │
+│                                                 Internet.                    │
+│ --output-dir              PATH                  Path to directory in which   │
+│                                                 you want the JSON file(s)    │
+│                                                 containing BERtron entities  │
+│                                                 to be created.               │
+│                                                 [default: .]                 │
+│ --target-file-size        INTEGER RANGE [x>=1]  Number of bytes you want     │
+│                                                 each JSON file to contain.   │
+│                                                 Each time the script writes  │
+│                                                 an additional BERtron entity │
+│                                                 to a file, it will compare   │
+│                                                 the file's size to this      │
+│                                                 number, in order to          │
+│                                                 determine whether to         │
+│                                                 continue growing the file or │
+│                                                 start a new file. This is    │
+│                                                 not a hard limit.            │
+│                                                 [default: 25000000]          │
+│ --help                                          Show this message and exit.  │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
@@ -90,7 +112,7 @@ source .venv/bin/activate
 
 Run the ingest script.
 
-```sh
+```shell
 uv run ingest.py
 ```
 
@@ -100,13 +122,13 @@ We use [`ruff`](https://docs.astral.sh/ruff/formatter/) as the code _formatter_.
 
 You can _check_ the code's format by running:
 
-```sh
+```shell
 uv run ruff format --diff
 ```
 
 You can _format_ the code by running:
 
-```sh
+```shell
 uv run ruff format
 ```
 
@@ -128,4 +150,15 @@ You can perform static type checking by running:
 
 ```shell
 uv run mypy
+```
+
+#### Profile performance
+
+We use [`pyinstrument`](https://pyinstrument.readthedocs.io/en/latest/) for performance
+profiling.
+
+You can perform performance profiling by running:
+
+```shell
+uv run pyinstrument ingest.py
 ```

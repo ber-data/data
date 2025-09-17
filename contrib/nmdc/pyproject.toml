@@ -9,7 +9,7 @@ dependencies = [
     "httpx >= 0.28.1",
 
     # We use `bertron-schema` to validate that Python objects conform to the BERtron schema.
-    "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@4ee7dfda1f53e7c7a668e417bdc921be103e1c8a",
+    "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@v0.1.0-alpha.12",
 
     # We use `nmdc-schema` to validate that Python objects conform to the NMDC schema.
     "nmdc-schema == 11.10.0",
@@ -29,10 +29,10 @@ dependencies = [
 [dependency-groups]
 dev = [
     # We use `mypy` for static type checking.
-    "mypy",
+    "mypy >= 1.18.1",
     # We use `pyinstrument` for performance profiling.
     # Docs: https://pyinstrument.readthedocs.io/en/latest/guide.html#profile-a-python-cli-command
-    "pyinstrument>=5.1.1",
+    "pyinstrument >= 5.1.1",
     # We use `ruff` for linting and formatting of Python source code.
     "ruff >= 0.13.0",
 ]

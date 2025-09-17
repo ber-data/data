@@ -101,7 +101,7 @@ wheels = [
 [[package]]
 name = "bertron-schema"
 version = "0.1.0"
-source = { git = "https://github.com/ber-data/bertron-schema.git?rev=4ee7dfda1f53e7c7a668e417bdc921be103e1c8a#4ee7dfda1f53e7c7a668e417bdc921be103e1c8a" }
+source = { git = "https://github.com/ber-data/bertron-schema.git?rev=v0.1.0-alpha.12#4ee7dfda1f53e7c7a668e417bdc921be103e1c8a" }
 dependencies = [
     { name = "linkml" },
     { name = "linkml-runtime" },
@@ -422,7 +422,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git?rev=4ee7dfda1f53e7c7a668e417bdc921be103e1c8a" },
+    { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git?rev=v0.1.0-alpha.12" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "nmdc-schema", specifier = "==11.10.0" },
     { name = "rich", specifier = "==14.1.0" },
@@ -432,7 +432,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "mypy" },
+    { name = "mypy", specifier = ">=1.18.1" },
     { name = "pyinstrument", specifier = ">=5.1.1" },
     { name = "ruff", specifier = ">=0.13.0" },
 ]

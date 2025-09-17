@@ -6,7 +6,7 @@
       "longitude": -121.5463
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "01814678-d268-4e5f-838c-fcd789d28d38",
@@ -57,7 +57,7 @@
       "longitude": -89.809103
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "025b148a-97a6-4923-b378-b2f0ea7e7871",
@@ -108,7 +108,7 @@
       "longitude": -77.99548
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "03942373-16c5-4c88-a48f-01ff0c5ef64f",
@@ -159,7 +159,7 @@
       "longitude": -100.9143
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "04c9b3e4-73cd-49e4-803e-7722f8d28a0f",
@@ -210,7 +210,7 @@
       "longitude": -110.84127
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "066252ab-fc7b-47be-ae2e-3b146c6a1fc9",
@@ -261,7 +261,7 @@
       "longitude": -149.632826
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "072e85bf-4a43-4212-83dc-108bb262620c",
@@ -312,7 +312,7 @@
       "longitude": -113.6678
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "073646e4-f628-43ef-99ac-32830db89e49",
@@ -363,7 +363,7 @@
       "longitude": -77.989804
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "07fc0047-a7b7-4e22-ad9f-64db315ddea8",
@@ -414,7 +414,7 @@
       "longitude": -91.4483
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "086a7f06-8bc1-4986-8d32-0752a953fb36",
@@ -465,7 +465,7 @@
       "longitude": -106.98326
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "087187a2-b744-47a0-a519-c2a2a69f9a15",
@@ -516,7 +516,7 @@
       "longitude": -91.444669
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "09834284-7398-40df-9cc8-cf6453760892",
@@ -567,7 +567,7 @@
       "longitude": -96.5849705
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "0b54a48d-1eb7-4a18-a1ee-196822875cdd",
@@ -618,7 +618,7 @@
       "longitude": -76.8992
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "0b93e458-47e3-46db-b4e1-f39711f96c38",
@@ -669,7 +669,7 @@
       "longitude": -76.7040867
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "0bdbf7c8-0cac-4fc2-aaae-1e2bb825812e",
@@ -720,7 +720,7 @@
       "longitude": -72.1896
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "0c7ada6e-c49a-4229-a061-8506ac0c81c6",
@@ -771,7 +771,7 @@
       "longitude": -97.347937
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "0c9ab484-6d35-4cfd-9dfc-b0d60b7281ba",
@@ -822,7 +822,7 @@
       "longitude": -123.9803
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "0d288a29-8fe4-4feb-95e1-df67c87aa9b0",
@@ -873,7 +873,7 @@
       "longitude": -122.3935
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "0ded08ae-a6f1-4807-a568-6a2d98320743",
@@ -924,7 +924,7 @@
       "longitude": -147.8317
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "0f551fad-deac-4286-921d-846240b2084a",
@@ -975,7 +975,7 @@
       "longitude": 107.06645556
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "10d460b8-21ff-40af-8aba-c36729ef1d91",
@@ -1026,7 +1026,7 @@
       "longitude": -81.65352
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "10e99897-6232-4800-b231-fc845fda3c81",
@@ -1077,7 +1077,7 @@
       "longitude": -79.789144
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "111409c4-a8f0-49a7-bc68-5707af6d15e4",
@@ -1128,7 +1128,7 @@
       "longitude": -88.239561
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "13b8674c-0372-4e96-9ed7-b70f3973ffd8",
@@ -1179,7 +1179,7 @@
       "longitude": -76.899
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "13cda761-df88-4bef-aba1-f71a9c4828ea",
@@ -1230,7 +1230,7 @@
       "longitude": -121.5475
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "14c8b517-0aa6-4fab-a451-2a3ca3130373",
@@ -1281,7 +1281,7 @@
       "longitude": -105.3052
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1573dde7-8cf6-4eec-a7de-922c7455fda4",
@@ -1332,7 +1332,7 @@
       "longitude": -121.95526
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1621bbce-26a2-4481-a51e-e1ec8e78b95b",
@@ -1383,7 +1383,7 @@
       "longitude": -80.524
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1676529b-0d0d-4917-aa7f-bbde94607827",
@@ -1434,7 +1434,7 @@
       "longitude": -134.75513
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "184a7b78-fc02-4ae4-8d56-3b8c782067ee",
@@ -1485,7 +1485,7 @@
       "longitude": -96.6132
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "18a7bcbc-1640-42cb-8fb3-ad06487422de",
@@ -1536,7 +1536,7 @@
       "longitude": -77.9237794
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1a7ea8c5-39b9-4d78-b2fc-298f863f1e2f",
@@ -1587,7 +1587,7 @@
       "longitude": -149.586768
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1b1cf84f-2b3c-49d3-a3e1-22f9d2555146",
@@ -1638,7 +1638,7 @@
       "longitude": -88.9968
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1b3882cc-be58-4f52-ad47-19518b87d5a8",
@@ -1689,7 +1689,7 @@
       "longitude": -79.810268
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1d747e15-4475-4771-9ec1-dfac4cd48a02",
@@ -1740,7 +1740,7 @@
       "longitude": -88.239856
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1e278fa5-b857-4334-92e5-dba308f34651",
@@ -1791,7 +1791,7 @@
       "longitude": -72.1902
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1e5ea56e-9b3d-48f3-8fd2-3b6b28c0dbcf",
@@ -1842,7 +1842,7 @@
       "longitude": -92.213752
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "1feebe98-8f19-430a-a004-1a8cc1094998",
@@ -1893,7 +1893,7 @@
       "longitude": -105.58879
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "20a50e22-2860-4557-85d0-fe58f3121f05",
@@ -1944,7 +1944,7 @@
       "longitude": -76.7044804
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "20b42520-e4bf-4efc-93e1-9823b9d82a1b",
@@ -1995,7 +1995,7 @@
       "longitude": -76.8966
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2109c500-24f2-4371-95b6-74fa6e8871f6",
@@ -2046,7 +2046,7 @@
       "longitude": -81.65353
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "21129045-113c-4241-9f3d-b43a7727982f",
@@ -2097,7 +2097,7 @@
       "longitude": -122.3946
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "215a996d-3c4c-4883-806b-ad6d1defd8d3",
@@ -2148,7 +2148,7 @@
       "longitude": -92.214107
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "22240095-35a1-405a-bd30-af3b2ff0fd09",
@@ -2199,7 +2199,7 @@
       "longitude": -79.809493
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "22883bf3-305a-428b-a8ed-287c66b72951",
@@ -2250,7 +2250,7 @@
       "longitude": -117.712334
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "24901bc7-e919-4d90-bcad-ad6eddcb351f",
@@ -2301,7 +2301,7 @@
       "longitude": -122.7401
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "25bd7ff0-3f0c-4fa3-8f51-1e43697de77f",
@@ -2352,7 +2352,7 @@
       "longitude": -105.57519
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2757294a-3717-4b29-9198-bad6b4a61398",
@@ -2403,7 +2403,7 @@
       "longitude": -117.708031
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2827fe96-1c1c-43e9-af6a-b4e63d3f5c4b",
@@ -2454,7 +2454,7 @@
       "longitude": -88.057667
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "29addf34-5a4c-454f-9d6c-ba2155d3591c",
@@ -2505,7 +2505,7 @@
       "longitude": -121.5474
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2a507848-9889-41b7-8db0-b248e05645ef",
@@ -2556,7 +2556,7 @@
       "longitude": -76.70313
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2aa615e6-503d-4e8b-afa9-c6ed87ed6a8d",
@@ -2607,7 +2607,7 @@
       "longitude": -110.839043
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2ae43d61-a196-40b2-a660-63737e360a7d",
@@ -2658,7 +2658,7 @@
       "longitude": -76.8375
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2cb39525-d5e8-457f-8386-ee9358fe55db",
@@ -2709,7 +2709,7 @@
       "longitude": -85.3711
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2cb5258c-b25a-41bc-86dc-78e8011aff42",
@@ -2760,7 +2760,7 @@
       "longitude": -96.5846641
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2d08d5cd-b364-43b5-8177-3ac9cbfb293d",
@@ -2811,7 +2811,7 @@
       "longitude": -122.8713
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2e33a660-b72c-4e23-9eea-f6c00c8b7af1",
@@ -2862,7 +2862,7 @@
       "longitude": -97.348239
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2e96acab-55eb-463d-8cdc-bc70c50bc31d",
@@ -2913,7 +2913,7 @@
       "longitude": -89.809205
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2eafb880-6236-4231-b607-7f74c1a4c66a",
@@ -2964,7 +2964,7 @@
       "longitude": -96.5847222
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "2f104f56-43a7-4e10-8b10-6a4d115b2c69",
@@ -3015,7 +3015,7 @@
       "longitude": -88.46056
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "3304a588-b3ba-4f6b-a240-b725ebe19a14",
@@ -3066,7 +3066,7 @@
       "longitude": -105.57555
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "3398ad46-7ea9-4e6d-a355-babe309a199f",
@@ -3117,7 +3117,7 @@
       "longitude": -94.0436
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "33f8c83d-51af-486e-bf32-3f8ebfe39dfb",
@@ -3168,7 +3168,7 @@
       "longitude": -106.73862
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "3465152e-09fe-412f-aafd-84bd0a9c01f2",
@@ -3219,7 +3219,7 @@
       "longitude": -97.348405
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "346e4d38-044a-4210-a6b6-e714632493e0",
@@ -3270,7 +3270,7 @@
       "longitude": -88.45822
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "347d6e99-cca0-491f-b928-a6d30b4a5c97",
@@ -3321,7 +3321,7 @@
       "longitude": -121.771
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "35347cc5-2472-4962-8d5b-2591c5507a1e",
@@ -3372,7 +3372,7 @@
       "longitude": -122.260417
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "366390f6-2441-42c9-9244-f7be6f11eedf",
@@ -3423,7 +3423,7 @@
       "longitude": -117.710447
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "369f9b57-cc94-4217-b068-9ff1f30941f8",
@@ -3474,7 +3474,7 @@
       "longitude": -85.3687
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "3707f5e3-135d-4321-b9ea-5624a71609f3",
@@ -3525,7 +3525,7 @@
       "longitude": -85.3722
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "375202f7-6e3d-4a10-927b-0484d84bf4b5",
@@ -3576,7 +3576,7 @@
       "longitude": -149.601734
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "379f9e8e-bb52-4529-a64e-29e96c759915",
@@ -3627,7 +3627,7 @@
       "longitude": -121.5473
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "37dd71bb-02d2-416c-8992-71c5be66cca8",
@@ -3678,7 +3678,7 @@
       "longitude": -77.97294444
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "37fcd84e-f176-4f56-ab27-75f175e23be2",
@@ -3729,7 +3729,7 @@
       "longitude": -122.3946
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "38ba1290-922b-4679-8404-7ff7f335b35c",
@@ -3780,7 +3780,7 @@
       "longitude": 107.06647778
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "396f1cfe-50d3-4255-a54a-ce9b9d30398d",
@@ -3831,7 +3831,7 @@
       "longitude": -88.9949
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "39f7b336-a16d-4245-9cae-f1a32ed02fe3",
@@ -3882,7 +3882,7 @@
       "longitude": -88.9964
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "3af0d2bd-1566-449d-9eb2-0afe910e12c8",
@@ -3933,7 +3933,7 @@
       "longitude": 107.06638889
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "3bd89bf4-1be6-44cb-bcbb-3e7a417ace72",
@@ -3984,7 +3984,7 @@
       "longitude": -85.3311
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "3cde231c-d9be-48ed-9767-6362847bc158",
@@ -4035,7 +4035,7 @@
       "longitude": -122.8498
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "3dc5d315-086b-450d-9120-8c05a91f0349",
@@ -4086,7 +4086,7 @@
       "longitude": -149.61081
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "40b9163c-f3d0-419f-9011-c078d5b17181",
@@ -4137,7 +4137,7 @@
       "longitude": -121.95273
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "40dfabfa-83f2-43e3-a223-82f969277b92",
@@ -4188,7 +4188,7 @@
       "longitude": -122.8722
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "414ffcbd-b777-41f8-9ba2-b7be869723a5",
@@ -4239,7 +4239,7 @@
       "longitude": -77.97136
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4153667c-dcba-4828-a23f-64a5ccf7bc8e",
@@ -4290,7 +4290,7 @@
       "longitude": -85.37
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "41f25e9a-6b7c-46e5-93a6-d50965e8fdec",
@@ -4341,7 +4341,7 @@
       "longitude": -94.500935
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "429e283e-6a95-458d-b299-9297a405a231",
@@ -4392,7 +4392,7 @@
       "longitude": -96.5849124
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "438dcc76-eea0-4b4a-87ca-b8fc77770ddb",
@@ -4443,7 +4443,7 @@
       "longitude": -113.6849
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "469fcaa6-0693-41f0-aa94-a8d8fc521644",
@@ -4494,7 +4494,7 @@
       "longitude": -122.3947
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "472c2312-d368-452f-b339-e10c178dc6f2",
@@ -4545,7 +4545,7 @@
       "longitude": -122.260417
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4764118d-5a17-410c-a162-4edf3d33d7e6",
@@ -4596,7 +4596,7 @@
       "longitude": -77.99062
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "478a5104-502b-42ab-9adc-dd005ebde88e",
@@ -4647,7 +4647,7 @@
       "longitude": -107.10684
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "48126b57-056d-41e4-b76c-5334ef51e779",
@@ -4698,7 +4698,7 @@
       "longitude": -122.260417
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4822ab62-6e43-4ce7-ad7a-46a5acd15171",
@@ -4749,7 +4749,7 @@
       "longitude": -105.3092
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4828ae4f-b15e-4cec-bb35-c1950b19c47f",
@@ -4800,7 +4800,7 @@
       "longitude": -117.22952
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "483235b6-ad20-4315-bbc4-f656cf2ada8d",
@@ -4851,7 +4851,7 @@
       "longitude": -88.45521
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "48de7362-8964-4238-a995-747efa345176",
@@ -4902,7 +4902,7 @@
       "longitude": -76.7033072
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "490b7dba-364a-4a59-8ecf-19a4ca211bb1",
@@ -4953,7 +4953,7 @@
       "longitude": -85.3723
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "499423ab-4efd-4ae6-8c97-6a43b269b2f5",
@@ -5004,7 +5004,7 @@
       "longitude": -96.5847963
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "499c5117-9c42-4a97-a938-fe00b59ef217",
@@ -5055,7 +5055,7 @@
       "longitude": -76.8991
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4a55f2ef-05cf-494a-9d09-544ffee74016",
@@ -5106,7 +5106,7 @@
       "longitude": -117.70869
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4a7db4d4-6f8d-4f38-a33b-4613414e2f23",
@@ -5157,7 +5157,7 @@
       "longitude": -113.729
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4b072eb9-2ce7-4e81-bdd6-b4e0c34a3869",
@@ -5208,7 +5208,7 @@
       "longitude": -149.313567
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4b5f7de3-0366-460c-9743-425c82f7e6a5",
@@ -5259,7 +5259,7 @@
       "longitude": -106.98326
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4b6f79ca-3783-4525-b1c2-d389c14cf1b2",
@@ -5310,7 +5310,7 @@
       "longitude": -88.9951
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4c512ae9-8cd5-40da-8904-247de9b16ed0",
@@ -5361,7 +5361,7 @@
       "longitude": -88.9964
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4dab5273-a027-4f0a-a8f6-3a8944a8487e",
@@ -5412,7 +5412,7 @@
       "longitude": -106.63902
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4dc5fc48-a913-4731-8882-1837771a9d17",
@@ -5463,7 +5463,7 @@
       "longitude": -88.45831
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4e04d01e-858e-4733-8b0f-9e3c47d8589d",
@@ -5514,7 +5514,7 @@
       "longitude": -110.835938
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "4f4e83eb-f5ed-4cde-b641-478cf48e7fe1",
@@ -5565,7 +5565,7 @@
       "longitude": -72.1902
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "509230b4-9d9b-48e4-b9f2-e6f79f55cb55",
@@ -5616,7 +5616,7 @@
       "longitude": -121.5463
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "51118474-2729-425e-8a0c-b7e24818becf",
@@ -5667,7 +5667,7 @@
       "longitude": -110.83957
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "527d7c64-1901-47c4-861b-0f614dafacab",
@@ -5718,7 +5718,7 @@
       "longitude": 107.06145406
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "530751cd-7043-40ca-9ff7-9f1cce99a77d",
@@ -5769,7 +5769,7 @@
       "longitude": -134.02972
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "5712000f-d35e-4607-93bf-130d883c274f",
@@ -5820,7 +5820,7 @@
       "longitude": -94.0436
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "5754ced4-6a61-454f-8646-fee24eca78e7",
@@ -5871,7 +5871,7 @@
       "longitude": -121.771
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "57b266d8-b4c3-4c88-91b0-cec8210a91e6",
@@ -5922,7 +5922,7 @@
       "longitude": -91.444563
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "58d91f86-8d08-4019-b8cf-e29aa4380b07",
@@ -5973,7 +5973,7 @@
       "longitude": -76.70394
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "58f62493-af88-4a48-9043-dea012333233",
@@ -6024,7 +6024,7 @@
       "longitude": -90.3975
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "593de5c7-7bba-4a77-8244-0735a20d3629",
@@ -6075,7 +6075,7 @@
       "longitude": -105.4809
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "59fa3391-061c-4fa1-89d6-b1fe6f4a115f",
@@ -6126,7 +6126,7 @@
       "longitude": -93.903
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "5ab6c4bc-ff09-402b-aad4-88d67c30cebe",
@@ -6177,7 +6177,7 @@
       "longitude": -91.444514
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "5c027a86-dc05-4f24-a979-111f0b06e5f9",
@@ -6228,7 +6228,7 @@
       "longitude": -97.34813
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "5d666a95-2937-464d-bd64-a1179630c043",
@@ -6279,7 +6279,7 @@
       "longitude": -96.5848544
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "5dc75dad-9d29-4e35-9503-4cad91b3dd6f",
@@ -6330,7 +6330,7 @@
       "longitude": -85.3687
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "5efcf762-317f-4a97-ab51-b0acb113a915",
@@ -6381,7 +6381,7 @@
       "longitude": -93.4118
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "5f6f91c8-e02e-480e-9c40-b9077c88d1fd",
@@ -6432,7 +6432,7 @@
       "longitude": -92.79583
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "61170950-4cce-4c15-abc5-2db60b78b782",
@@ -6483,7 +6483,7 @@
       "longitude": -92.213876
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "61416135-73b8-488a-a8b6-58a53a83b6ea",
@@ -6534,7 +6534,7 @@
       "longitude": -92.213878
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "61b0e90d-94b5-4adb-b74b-e2d432b03d50",
@@ -6585,7 +6585,7 @@
       "longitude": -117.713585
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "62f4efab-07df-4edc-b866-45b315049d79",
@@ -6636,7 +6636,7 @@
       "longitude": -88.23945
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6369cb9c-9f57-419f-91a5-b0bcd61faad3",
@@ -6687,7 +6687,7 @@
       "longitude": -76.8972
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "63b5729c-d4f4-44db-8c8f-8b650f54b7bc",
@@ -6738,7 +6738,7 @@
       "longitude": -91.4482
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "63d428d6-fe7b-4084-8cb6-d8d0916a5749",
@@ -6789,7 +6789,7 @@
       "longitude": -120.261
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "64244e0b-db78-4467-96bb-8cacbb0cc087",
@@ -6840,7 +6840,7 @@
       "longitude": -96.584606
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "64c761b7-18c6-46e4-8d53-63606daeea0e",
@@ -6891,7 +6891,7 @@
       "longitude": -104.852175
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "650f98a8-6466-496f-976b-04e0612133fa",
@@ -6942,7 +6942,7 @@
       "longitude": -147.485333333333
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "65e31a3c-6ac6-47ff-8687-fb04d302077c",
@@ -6993,7 +6993,7 @@
       "longitude": -89.80923
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "66bbb6fd-3162-4175-ba49-9e000521bcb0",
@@ -7044,7 +7044,7 @@
       "longitude": -105.5812
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "674bafed-0cb5-4194-aef4-5313bcac12c5",
@@ -7095,7 +7095,7 @@
       "longitude": -76.70585
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6791809a-a2f3-4ba0-bafb-5429b5db17c0",
@@ -7146,7 +7146,7 @@
       "longitude": -90.46
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "680dfa71-ab37-427d-ac9b-b6985b4d5bfc",
@@ -7197,7 +7197,7 @@
       "longitude": -76.899
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "68522170-5e66-472d-a7a4-23689a320547",
@@ -7248,7 +7248,7 @@
       "longitude": -132.54021
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "697043db-b510-4a84-8b06-a157a1201fe2",
@@ -7299,7 +7299,7 @@
       "longitude": -94.0436
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6a59060c-5618-48e8-a0dd-492a464c6096",
@@ -7350,7 +7350,7 @@
       "longitude": -76.551203
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6a74ec1b-82f6-4552-96b8-990159a2eb03",
@@ -7401,7 +7401,7 @@
       "longitude": -120.2613
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6c93ec6f-feba-4dff-a217-941f625d091f",
@@ -7452,7 +7452,7 @@
       "longitude": -122.260417
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6cb701df-45cb-49d9-94d2-be8ceb40150e",
@@ -7503,7 +7503,7 @@
       "longitude": -105.5901
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6cfc9c28-2aa0-40fc-b506-275db4d61def",
@@ -7554,7 +7554,7 @@
       "longitude": -96.5844899
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6e85b3b6-58f0-43a6-862f-3af836515e3b",
@@ -7605,7 +7605,7 @@
       "longitude": -94.1496
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6edd155a-d8f6-4857-8ab2-3f69cb719ccb",
@@ -7656,7 +7656,7 @@
       "longitude": -121.7711
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6f061258-b746-4a05-9e44-7b71086acf77",
@@ -7707,7 +7707,7 @@
       "longitude": 107.06641111
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "6f264398-eb8f-4a9f-b80d-3dd2f3f2d319",
@@ -7758,7 +7758,7 @@
       "longitude": -94.0436
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "70915e5a-1cff-44a6-b95f-2d35351b0f11",
@@ -7809,7 +7809,7 @@
       "longitude": -77.943394
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "729694df-709b-47ca-8231-6c7e2d3a71ce",
@@ -7860,7 +7860,7 @@
       "longitude": -117.229892
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "735c20c4-0905-4a26-890c-28fa1b927f85",
@@ -7911,7 +7911,7 @@
       "longitude": -83.373792
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7418dee2-43f5-4164-b124-22cfb0ddfc57",
@@ -7962,7 +7962,7 @@
       "longitude": -85.3711
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "744fd324-d5a2-45b4-834f-ef4c8f98173b",
@@ -8013,7 +8013,7 @@
       "longitude": -96.893469
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7475bf3a-0b66-4062-85fc-2885b27af20d",
@@ -8064,7 +8064,7 @@
       "longitude": -91.4461
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "74c611e9-7ed0-47c8-bbba-668df014191d",
@@ -8115,7 +8115,7 @@
       "longitude": -85.3722
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7608873f-c135-4a4f-ab19-1e6cc7aa959d",
@@ -8166,7 +8166,7 @@
       "longitude": -122.394
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7660f674-36bf-4e2f-9767-49e9849cac86",
@@ -8217,7 +8217,7 @@
       "longitude": -76.41
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "76d6e2cc-2176-41c5-93c4-78125188f57d",
@@ -8268,7 +8268,7 @@
       "longitude": -149.312092
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "76e77e47-d2a3-4d8f-9849-646b7f03013c",
@@ -8319,7 +8319,7 @@
       "longitude": -113.6674
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "78795296-70c0-4c31-bcbb-efad4c58eb00",
@@ -8370,7 +8370,7 @@
       "longitude": -83.37549
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "78e21351-1e49-4a19-a0b1-1518256d68ff",
@@ -8421,7 +8421,7 @@
       "longitude": -76.8954
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "78eee438-7e5f-43ea-80a3-6a3ef49b7a37",
@@ -8472,7 +8472,7 @@
       "longitude": -111.5687
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "79777be4-b943-4ae2-88e6-64c7a9977564",
@@ -8523,7 +8523,7 @@
       "longitude": -122.260417
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "79a8c9d5-941b-4c49-97cd-2cf48da1ed05",
@@ -8574,7 +8574,7 @@
       "longitude": -88.0842
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "79a8d276-5d04-48c7-9589-44890b56f67c",
@@ -8625,7 +8625,7 @@
       "longitude": -134.02987
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7a42fb1d-598b-4804-924d-199743492c53",
@@ -8676,7 +8676,7 @@
       "longitude": -105.59051
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7ad92f21-34f0-4d41-ac95-318c2ea26474",
@@ -8727,7 +8727,7 @@
       "longitude": -121.7711
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7c100ad7-99d3-44f2-afca-f7293e8bb2dc",
@@ -8778,7 +8778,7 @@
       "longitude": -85.371
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7c7ecaa5-ac9a-4412-9334-30cbdabe0e6d",
@@ -8829,7 +8829,7 @@
       "longitude": -85.2211
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7d594b13-ede5-4585-9ee1-91bc40ac59d7",
@@ -8880,7 +8880,7 @@
       "longitude": -105.58763
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7d7687aa-b8a2-4e86-b418-5a135a6ab0f7",
@@ -8931,7 +8931,7 @@
       "longitude": -79.777104
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "7dcc0700-031e-41ed-8e5b-f8eb026958fe",
@@ -8982,7 +8982,7 @@
       "longitude": -149.643096
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8033b427-23b1-4b1d-a8e6-b34a8558b985",
@@ -9033,7 +9033,7 @@
       "longitude": -117.229763
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "80aa35f1-e435-4acf-8cb4-badb8c753805",
@@ -9084,7 +9084,7 @@
       "longitude": -104.851983
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "82d61fd4-0132-43f1-a32f-bd7526b4dd37",
@@ -9135,7 +9135,7 @@
       "longitude": -122.3929
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "838e85b7-e9e7-4da0-ab3a-cb9ed2d8fb5d",
@@ -9186,7 +9186,7 @@
       "longitude": -81.65568
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8394bfb3-2cc0-44bb-bee8-9f311f265a98",
@@ -9237,7 +9237,7 @@
       "longitude": -85.3687
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8574f8d3-274c-43bf-a816-d241df5a38dc",
@@ -9288,7 +9288,7 @@
       "longitude": -85.3712
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "86569ed3-ae43-484f-8289-0501912c252c",
@@ -9339,7 +9339,7 @@
       "longitude": -96.5845479
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "89760f24-8850-45b8-af13-a905d4ae8d11",
@@ -9390,7 +9390,7 @@
       "longitude": -132.54031
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8d01ad29-050a-46e8-9fa6-65c111b5bd57",
@@ -9441,7 +9441,7 @@
       "longitude": -132.54028
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8ddcd260-1bd8-4858-8787-066f82d41a51",
@@ -9492,7 +9492,7 @@
       "longitude": -107.10684
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8ecaa9c3-ca10-4774-80bf-a77f8b78429d",
@@ -9543,7 +9543,7 @@
       "longitude": -104.863373
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8edc4dfc-6ac7-4769-98fd-ef07832654fb",
@@ -9594,7 +9594,7 @@
       "longitude": -79.790309
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8f2c9f5d-b662-4af2-813b-9b9e229e405e",
@@ -9645,7 +9645,7 @@
       "longitude": -117.229661
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8f5044f6-cb70-475b-b858-ae04182dddbc",
@@ -9696,7 +9696,7 @@
       "longitude": -110.83973
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "8fff6725-a58b-43bb-83e3-0dbc45c3ffd6",
@@ -9747,7 +9747,7 @@
       "longitude": -93.103395
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "901aa169-c6a8-4e23-be0e-8b654720ceb4",
@@ -9798,7 +9798,7 @@
       "longitude": -89.80919
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9071e29c-f2f9-4d38-abbb-382e91e45a86",
@@ -9849,7 +9849,7 @@
       "longitude": -106.69999
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "91518ee2-02c8-4697-9b2e-3542ed5b77dc",
@@ -9900,7 +9900,7 @@
       "longitude": -106.88611
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "91c5b4d6-328b-4a5d-ab10-443665796872",
@@ -9951,7 +9951,7 @@
       "longitude": -122.8494
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "920a4982-efb4-4b47-8974-f96ec97412fe",
@@ -10002,7 +10002,7 @@
       "longitude": -81.65353
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "927cfc83-20ce-4207-8902-60e68fa35a69",
@@ -10053,7 +10053,7 @@
       "longitude": -85.3925
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9435c9ea-c5f7-4d70-86bd-bbd9696bf6c8",
@@ -10104,7 +10104,7 @@
       "longitude": -93.3406
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9436d7d0-5334-4987-8b7e-ef48d9c1d116",
@@ -10155,7 +10155,7 @@
       "longitude": -88.46049
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9461000e-64cd-4f19-a5a2-5393a5e35475",
@@ -10206,7 +10206,7 @@
       "longitude": -120.261
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9478c6a8-57d6-4e22-ba2b-33445cab2ac4",
@@ -10257,7 +10257,7 @@
       "longitude": -117.708588
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "95223429-c645-4a8d-9295-95ec35f3adf0",
@@ -10308,7 +10308,7 @@
       "longitude": -83.366911
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "952e87c2-419a-4b3a-b73f-d2eea4b1d2b0",
@@ -10359,7 +10359,7 @@
       "longitude": -106.977891
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9614e41b-1388-43f4-bd71-894a641634ad",
@@ -10410,7 +10410,7 @@
       "longitude": -92.214089
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "97ee8869-0c8d-446a-b7e5-a648aa46223a",
@@ -10461,7 +10461,7 @@
       "longitude": -147.8308
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "98044177-bb01-4d40-ae8e-7a8a35efdf8d",
@@ -10512,7 +10512,7 @@
       "longitude": -121.95273
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9878d13c-a770-436b-8d54-3b791958d15a",
@@ -10563,7 +10563,7 @@
       "longitude": -85.3851
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "99a882ea-213f-4294-875e-ab88b3afb731",
@@ -10614,7 +10614,7 @@
       "longitude": -85.36875
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9a001457-3163-4aa2-a62c-3ff833dfd590",
@@ -10665,7 +10665,7 @@
       "longitude": -122.8725
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9a340fc8-00aa-4ce2-8538-c0fbad727928",
@@ -10716,7 +10716,7 @@
       "longitude": -85.37
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9a533861-a366-4078-a2ec-1b8308f129cc",
@@ -10767,7 +10767,7 @@
       "longitude": -97.348309
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9acfd9c7-a311-45c2-8c4b-b59574f81396",
@@ -10818,7 +10818,7 @@
       "longitude": -96.5850286
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9b392075-b285-42f0-b7da-5ac020b69b02",
@@ -10869,7 +10869,7 @@
       "longitude": -83.368387
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9b54efa5-f4c6-46b9-8787-34e0d75abd3c",
@@ -10920,7 +10920,7 @@
       "longitude": -117.229482
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9c785f67-8733-478a-b3b7-ecf7a061503c",
@@ -10971,7 +10971,7 @@
       "longitude": -104.863633
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9c808351-d378-4954-817f-7f1882fe17f2",
@@ -11022,7 +11022,7 @@
       "longitude": -104.852338
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9d7dccc3-3c48-40fa-9474-72edcd59b95e",
@@ -11073,7 +11073,7 @@
       "longitude": -121.95205
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9f1d17df-b0ec-4998-94f5-6a497551af4d",
@@ -11124,7 +11124,7 @@
       "longitude": -97.348076
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9f3f8d27-acc8-4dca-958c-28f6fc960827",
@@ -11175,7 +11175,7 @@
       "longitude": -81.653525
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9f516f43-038f-425f-a8f1-225faa4072ae",
@@ -11226,7 +11226,7 @@
       "longitude": -121.95075
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9f7961f5-a662-4bf7-8fad-b2b2eeb7bb6a",
@@ -11277,7 +11277,7 @@
       "longitude": -79.809802
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9fa27f70-9518-439e-be34-df5d21cd61b6",
@@ -11328,7 +11328,7 @@
       "longitude": -147.923643
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9fc694eb-6406-4535-a79d-f93678f8023b",
@@ -11379,7 +11379,7 @@
       "longitude": -147.924623
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "9fea5bb4-9feb-4e54-8e16-29c6ed007be6",
@@ -11430,7 +11430,7 @@
       "longitude": -79.776366
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a08741f3-7b84-4b4d-a28f-ec15035bb273",
@@ -11481,7 +11481,7 @@
       "longitude": -92.213754
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a137076f-79c6-4a54-a08c-3c49e558a0df",
@@ -11532,7 +11532,7 @@
       "longitude": -110.841723
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a1405e6e-17dd-43f3-8f32-8788c84ae988",
@@ -11583,7 +11583,7 @@
       "longitude": -72.1889
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a14d79e4-f742-4ba4-a823-4878a5d4526c",
@@ -11634,7 +11634,7 @@
       "longitude": -88.239497
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a2b875d8-65a3-4853-9d65-4d540e7974ba",
@@ -11685,7 +11685,7 @@
       "longitude": -121.771
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a35c22e2-cf93-4f4f-a55d-9efc1c428194",
@@ -11736,7 +11736,7 @@
       "longitude": -119.7367
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a36d1807-5724-4ccf-9e2b-cad618105786",
@@ -11787,7 +11787,7 @@
       "longitude": 107.06143777
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a3db8006-10f2-4525-8c2b-5ca8ec31806d",
@@ -11838,7 +11838,7 @@
       "longitude": -76.4085
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a4b02feb-0955-4920-a32b-5ade717e0815",
@@ -11889,7 +11889,7 @@
       "longitude": -106.978
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a5a1113b-83eb-47a1-b38b-c88a1b7c7394",
@@ -11940,7 +11940,7 @@
       "longitude": -79.778759
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a662b9bf-8f81-49fb-be19-41c11d08892f",
@@ -11991,7 +11991,7 @@
       "longitude": -94.1419
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "a8f2bb9b-7c26-4494-a314-e45cda6a44e8",
@@ -12042,7 +12042,7 @@
       "longitude": -105.3091
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "aa32b4fd-d337-4ded-bef4-23dc7dd3fe4b",
@@ -12093,7 +12093,7 @@
       "longitude": -117.229622
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "aad1af51-fe57-4103-9560-e0514e7e2a1b",
@@ -12144,7 +12144,7 @@
       "longitude": -88.9964
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "aad37d12-96c0-45a7-a1a3-e319c707199f",
@@ -12195,7 +12195,7 @@
       "longitude": -84.463904
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ab1ea497-f237-47a4-9f07-adc51294495a",
@@ -12246,7 +12246,7 @@
       "longitude": -79.777684
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ab94f959-301f-4a88-bbd4-1a78a76743b3",
@@ -12297,7 +12297,7 @@
       "longitude": -122.260417
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ad211bc7-6f6e-4d62-8702-0973a2a6e291",
@@ -12348,7 +12348,7 @@
       "longitude": -117.712183
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ad29bdc5-d2de-48b6-ab3e-8b9ed9244a55",
@@ -12399,7 +12399,7 @@
       "longitude": -121.5476
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ad7fd48a-4716-405a-bce1-1f698882e333",
@@ -12450,7 +12450,7 @@
       "longitude": -76.70561
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "adb430cd-2fc0-41e1-87d6-291912ef6a18",
@@ -12501,7 +12501,7 @@
       "longitude": -94.0436
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ae275746-7dce-43c8-9ac3-53b22303a52f",
@@ -12552,7 +12552,7 @@
       "longitude": -85.2211
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "afc6f1da-fbf7-4440-acfa-41632fad06f2",
@@ -12603,7 +12603,7 @@
       "longitude": -121.7711
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b1127fb2-b615-4529-9374-c9b05cb2bb0c",
@@ -12654,7 +12654,7 @@
       "longitude": -147.923722
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b1f30f34-3871-4819-9466-7dcd3d67de43",
@@ -12705,7 +12705,7 @@
       "longitude": 107.06140518
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b218f9f4-e1e5-4bc7-a10d-e0a915cdd57d",
@@ -12756,7 +12756,7 @@
       "longitude": -112.583836
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b26c33eb-1d03-42d4-bb67-dbff8571f434",
@@ -12807,7 +12807,7 @@
       "longitude": -110.841557
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b286eb0d-171a-492f-8003-9d85263e5617",
@@ -12858,7 +12858,7 @@
       "longitude": -77.96402
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b29bee07-8c87-4fbd-be98-8a877de3801d",
@@ -12909,7 +12909,7 @@
       "longitude": -89.809305
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b470289a-da8c-44d0-ad1b-d03ab54b959a",
@@ -12960,7 +12960,7 @@
       "longitude": -121.5464
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b4a4767e-bb36-4a77-a14a-2214cf202fd0",
@@ -13011,7 +13011,7 @@
       "longitude": -76.7036938
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b4dc99d4-bcaf-421e-a2f5-3bee04b481ef",
@@ -13062,7 +13062,7 @@
       "longitude": -94.1484
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b5bc6da9-e19c-40d5-afac-7f0746d9f135",
@@ -13113,7 +13113,7 @@
       "longitude": -85.3722
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b5fceca2-362f-4213-bcd6-ccd030dfc4c6",
@@ -13164,7 +13164,7 @@
       "longitude": -117.229904
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b63649a2-fa7f-4333-a09a-35d2c0128c69",
@@ -13215,7 +13215,7 @@
       "longitude": -88.239572
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b741676f-23af-43eb-9e86-5879cd58e920",
@@ -13266,7 +13266,7 @@
       "longitude": -97.348239
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b7eea594-d359-47c3-9b2f-1e24bcdaaad9",
@@ -13317,7 +13317,7 @@
       "longitude": -79.809898
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b84f6dd9-fa47-4a2d-8db8-362eb1852580",
@@ -13368,7 +13368,7 @@
       "longitude": -92.79086
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b8bc92a4-29eb-4aa1-a708-0b97f3b33e51",
@@ -13419,7 +13419,7 @@
       "longitude": -113.6995
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b8dffa35-7464-4ba4-89f7-9a3d9b8ae893",
@@ -13470,7 +13470,7 @@
       "longitude": -89.809143
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "b91e72d4-4195-4ec8-ab71-4bae922130d8",
@@ -13521,7 +13521,7 @@
       "longitude": -90.947663
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ba36ee10-02d8-41c5-af01-d0778b392034",
@@ -13572,7 +13572,7 @@
       "longitude": -149.312466
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "bb156211-f5c4-46f7-9d7c-aba8f9c2e776",
@@ -13623,7 +13623,7 @@
       "longitude": -106.978712
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "bba7dd89-c41a-432e-8fd4-e1b63d0f9b52",
@@ -13674,7 +13674,7 @@
       "longitude": -134.74298
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "bba85ba7-f134-4c51-945e-a4669e020bb5",
@@ -13725,7 +13725,7 @@
       "longitude": -104.863978
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "bd0a9854-3266-426d-a111-8db11b93df07",
@@ -13776,7 +13776,7 @@
       "longitude": -88.9952
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "bd99026d-55a9-456d-8445-13afaa0d8694",
@@ -13827,7 +13827,7 @@
       "longitude": -106.64008
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "bdfa7634-7c3c-45dc-a90a-99ab2f74dcf6",
@@ -13878,7 +13878,7 @@
       "longitude": -117.229776
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "c25a07ab-1b13-4fe1-8a74-caf1aaf4b5da",
@@ -13929,7 +13929,7 @@
       "longitude": 107.06643333
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "c428252e-ea31-4959-890b-60c412cca2f0",
@@ -13980,7 +13980,7 @@
       "longitude": -122.8493
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "c657c988-cafd-4e3b-af1c-ade5853ef67f",
@@ -14031,7 +14031,7 @@
       "longitude": -106.73611
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "c7649c2b-750b-4e20-bcb5-638ddec826d9",
@@ -14082,7 +14082,7 @@
       "longitude": -81.655559
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "c799ed39-90bd-49f7-8c40-8506b4947df3",
@@ -14133,7 +14133,7 @@
       "longitude": -88.056687
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "c7f6bc66-eeb2-43a6-be5e-8774c16d87a0",
@@ -14184,7 +14184,7 @@
       "longitude": -121.771
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "c84072b2-85b9-47ec-8f15-19ad17bf78ad",
@@ -14235,7 +14235,7 @@
       "longitude": -147.485831666667
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "c924182e-9818-4b5f-b28d-9e2846c842ce",
@@ -14286,7 +14286,7 @@
       "longitude": -121.9604
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ca7d156a-ba4c-47aa-ba7c-ecae40a4b4d4",
@@ -14337,7 +14337,7 @@
       "longitude": -113.7002
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "cc189929-76ce-4b00-9ecd-5a6ceb5c58e6",
@@ -14388,7 +14388,7 @@
       "longitude": -76.8987
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "cc388cf2-48ad-49a5-98c4-dc704c4ac867",
@@ -14439,7 +14439,7 @@
       "longitude": -121.95239
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "cce24d41-a0ac-4c0d-b69d-83d6ba936194",
@@ -14490,7 +14490,7 @@
       "longitude": -81.653547
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "cd4e24fd-f57c-4baf-8a72-3f8435ba0284",
@@ -14541,7 +14541,7 @@
       "longitude": -88.995
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ce736f20-f1c0-4011-8a34-5d16b6980f04",
@@ -14592,7 +14592,7 @@
       "longitude": -81.427
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "cec995b7-a403-475f-8f88-d868890b5adf",
@@ -14643,7 +14643,7 @@
       "longitude": -121.7711
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "cef52b01-8dc9-43ed-9e22-88c92b048fd9",
@@ -14694,7 +14694,7 @@
       "longitude": -88.075336
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d114237d-eed6-41f3-a48b-9132d8b7939a",
@@ -14745,7 +14745,7 @@
       "longitude": -120.2613
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d2c9fa98-471a-4d0a-80b5-02da1e9900e1",
@@ -14796,7 +14796,7 @@
       "longitude": -72.1889
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d423ca7c-9a9f-4974-9c29-626c8d425be1",
@@ -14847,7 +14847,7 @@
       "longitude": -106.9786
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d43d66d8-d34e-492c-b3f1-4d34ea117594",
@@ -14898,7 +14898,7 @@
       "longitude": -121.771
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d55d7486-9ad4-4e56-a137-2671ba6eaceb",
@@ -14949,7 +14949,7 @@
       "longitude": -117.712927
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d5f49dc6-aa3a-4519-9d2f-9f0243b2de0e",
@@ -15000,7 +15000,7 @@
       "longitude": -88.45514
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d619e27a-c2b9-4724-9868-c65fd56fae38",
@@ -15051,7 +15051,7 @@
       "longitude": -110.841612
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d650d271-a408-4d41-b629-dabefc617b0c",
@@ -15102,7 +15102,7 @@
       "longitude": -117.712083
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d66f55ac-20e4-4e4c-b696-2e2a95431213",
@@ -15153,7 +15153,7 @@
       "longitude": -85.3688
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d673dc11-172b-4834-86fe-d0d84dd5f104",
@@ -15204,7 +15204,7 @@
       "longitude": -88.075011
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d6b0b712-1b4d-4b55-8026-bcc9f65e889e",
@@ -15255,7 +15255,7 @@
       "longitude": -85.3968
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d7167689-dd54-480e-818d-2cea8e5c4dd2",
@@ -15306,7 +15306,7 @@
       "longitude": -72.1897
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d7b19bfb-ed6a-4763-b0f8-09ce6714b07a",
@@ -15357,7 +15357,7 @@
       "longitude": -105.5507
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d8ac3f49-7322-4886-8195-75dfe324ad2b",
@@ -15408,7 +15408,7 @@
       "longitude": -89.809212
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "d9a4a3ab-ac34-47b2-b222-8bb69ce0d7cf",
@@ -15459,7 +15459,7 @@
       "longitude": -88.239887
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "dc0b4ae3-a59b-42b9-a547-a27d2f22db36",
@@ -15510,7 +15510,7 @@
       "longitude": -85.3722
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "dc25c27d-9281-4318-b3f6-449536bd575e",
@@ -15561,7 +15561,7 @@
       "longitude": -79.778762
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "dc36f8c0-d5d5-4077-9add-8216f2f45328",
@@ -15612,7 +15612,7 @@
       "longitude": -72.189
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "dc69cfc0-eeaf-4d05-aa07-cd3367604b7b",
@@ -15663,7 +15663,7 @@
       "longitude": -122.8714
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "dc83fbc9-6f1e-4b77-a155-0dc22f56d222",
@@ -15714,7 +15714,7 @@
       "longitude": -85.3698
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "dc84f769-63b8-4f88-948c-8e1a7d616868",
@@ -15765,7 +15765,7 @@
       "longitude": -149.610853
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "dd781c29-f111-41ef-8f9c-9552336e5871",
@@ -15816,7 +15816,7 @@
       "longitude": -79.809606
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "de2392d9-026c-4ff6-a9f7-bd06006b9d52",
@@ -15867,7 +15867,7 @@
       "longitude": -88.083488
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "de66a25e-ac9a-4e2f-a2d8-1590f8609d72",
@@ -15918,7 +15918,7 @@
       "longitude": -92.214099
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "de71ba8e-a533-4b47-abbd-cdb920fca90a",
@@ -15969,7 +15969,7 @@
       "longitude": -105.59051
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "df20e6f6-eb5f-468e-9a55-a59f68782c35",
@@ -16020,7 +16020,7 @@
       "longitude": -134.71397
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "df35fa3e-7d78-4e0b-a455-671c1c56d601",
@@ -16071,7 +16071,7 @@
       "longitude": -72.1896
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "df489767-72fd-42eb-9ab4-3c2f6ee41653",
@@ -16122,7 +16122,7 @@
       "longitude": -147.485656666667
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "df688993-1a45-4274-8b04-75bbf7e9cb07",
@@ -16173,7 +16173,7 @@
       "longitude": -88.239856
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "df9ccae6-ae96-47a3-aad8-9e249691b5b4",
@@ -16224,7 +16224,7 @@
       "longitude": -112.1156
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e015fd38-e1f2-4aa0-a4a1-dacfb11a3d72",
@@ -16275,7 +16275,7 @@
       "longitude": -121.95181
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e065a59d-853c-4704-8b25-8c665e7ecf89",
@@ -16326,7 +16326,7 @@
       "longitude": -106.70009
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e1771b3c-9afc-4425-9c94-7211d7ca48fb",
@@ -16377,7 +16377,7 @@
       "longitude": -105.3094
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e1c6e13e-64fc-4cea-bf9f-9fe4a6c03322",
@@ -16428,7 +16428,7 @@
       "longitude": -149.601333
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e308e18b-5fcc-4c8a-97b5-d3f76ce199d7",
@@ -16479,7 +16479,7 @@
       "longitude": -83.368219
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e3309607-e094-4d2c-829e-481841ded9a3",
@@ -16530,7 +16530,7 @@
       "longitude": -88.9968
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e38d4c45-f975-4a2b-8710-7d2774620675",
@@ -16581,7 +16581,7 @@
       "longitude": -83.374212
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e3b16e95-a3e8-4f61-96c9-c1282afb7ddd",
@@ -16632,7 +16632,7 @@
       "longitude": -147.8313
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e4a536b1-8bba-419e-9afe-b95386d25aa9",
@@ -16683,7 +16683,7 @@
       "longitude": -149.312192
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e60fe706-5440-46f1-a569-e423c06d87eb",
@@ -16734,7 +16734,7 @@
       "longitude": -106.70012
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e625a30f-b33f-452b-b1d1-5444c37b8b06",
@@ -16785,7 +16785,7 @@
       "longitude": -106.7442
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e69457ae-a11d-4797-a349-d42672ba911b",
@@ -16836,7 +16836,7 @@
       "longitude": -79.80992
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e6cf5916-a502-4225-b38b-ece5915f76e9",
@@ -16887,7 +16887,7 @@
       "longitude": -122.3929
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e7fd0a64-4918-46ba-bfe6-e98e83ca315d",
@@ -16938,7 +16938,7 @@
       "longitude": -121.5462
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e8183672-091f-47af-ad1e-71dbf5d24c29",
@@ -16989,7 +16989,7 @@
       "longitude": -122.3941
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e82beab8-58f1-4a90-95c1-1cc9832e425c",
@@ -17040,7 +17040,7 @@
       "longitude": -83.367347
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e8740ee8-9a04-42be-82ee-fac329ababf8",
@@ -17091,7 +17091,7 @@
       "longitude": -77.821665
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e8ac5333-216c-482d-ac9b-67ad1d9e0ae8",
@@ -17142,7 +17142,7 @@
       "longitude": -76.4092
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e9318e82-ce1b-41db-ad10-411ffaf36c8d",
@@ -17193,7 +17193,7 @@
       "longitude": -79.77687
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "e9702b90-405a-4eb3-8afc-e66a43161a49",
@@ -17244,7 +17244,7 @@
       "longitude": -89.8091
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ea03e78f-d27f-492b-b249-5c248d7e9358",
@@ -17295,7 +17295,7 @@
       "longitude": -110.838934
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ebb325f2-3a43-45ff-9689-2077f999b439",
@@ -17346,7 +17346,7 @@
       "longitude": -147.8312
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ebd93e39-746a-47ea-97ab-fc03489c3545",
@@ -17397,7 +17397,7 @@
       "longitude": -134.55225
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "edf00fc0-50ed-4a8b-a383-59f410f5a4cd",
@@ -17448,7 +17448,7 @@
       "longitude": -85.2211
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ee3caa47-55ab-47b7-8d87-7e2cba5c94b5",
@@ -17499,7 +17499,7 @@
       "longitude": -89.4955
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f10d4e3d-c3de-4c06-bf5c-0892ea966dfe",
@@ -17550,7 +17550,7 @@
       "longitude": -76.70563
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f15ae0ce-bf8e-43ee-bd4c-f917d5e668f9",
@@ -17601,7 +17601,7 @@
       "longitude": -81.655879
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f2d6ec79-a437-4f25-bac8-e31c08707797",
@@ -17652,7 +17652,7 @@
       "longitude": -94.0436
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f2fbc0f5-7d97-45c7-9cb1-c9b096cae0b1",
@@ -17703,7 +17703,7 @@
       "longitude": -106.88611
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f4a465b2-61ad-4a97-8e3f-f0d2f2b1c400",
@@ -17754,7 +17754,7 @@
       "longitude": -85.995647
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f6710c6a-1b39-4450-a5b5-da68721162bb",
@@ -17805,7 +17805,7 @@
       "longitude": 107.06142147
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f6ef3183-1fb5-4282-b2a4-da6af589d702",
@@ -17856,7 +17856,7 @@
       "longitude": -72.1903
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f744169e-1ba3-4cde-9b05-201c95783dda",
@@ -17907,7 +17907,7 @@
       "longitude": -121.95305
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f90d1dd9-fa9c-4cf5-96a3-ab90750696c6",
@@ -17958,7 +17958,7 @@
       "longitude": -89.80891
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "f9b1d2fa-eb2c-4813-ad9d-b9311a8e8f20",
@@ -18009,7 +18009,7 @@
       "longitude": -83.374076
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "fb4daa76-1033-4e8b-b8af-e4814cc7e474",
@@ -18060,7 +18060,7 @@
       "longitude": -149.317372
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "fc069c4a-02d8-45ab-8333-3ef79c3e6f33",
@@ -18111,7 +18111,7 @@
       "longitude": -106.63859
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "fd2b1438-c6bc-4eea-9e2a-75719a1f5b78",
@@ -18162,7 +18162,7 @@
       "longitude": -121.95299
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "fe930d76-6fd5-4a50-95dc-7c63c77a2984",
@@ -18213,7 +18213,7 @@
       "longitude": -117.229722
     },
     "entity_type": [
-      "soil"
+      "sample"
     ],
     "description": "MONet Soil Core",
     "id": "ffe0ae44-3624-4ab3-a33a-6749761b62ed",

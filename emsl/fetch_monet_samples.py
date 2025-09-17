@@ -39,7 +39,7 @@ for sample in sample_data_from_api:
             "longitude": float(sample['longitude'])
         },
         "entity_type": [
-            "soil"
+            "sample"
         ],
         "description": "MONet Soil Core",
         "id": sample["id"], # UUID for samplingActivity table in Analysis DB (Core B metadata)

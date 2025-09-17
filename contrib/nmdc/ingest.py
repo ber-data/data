@@ -200,6 +200,8 @@ class BiosampleMapper(nmdc.Biosample):
                 )
             # If the value is a QuantityValue, map as many fields as possible to the property.
             elif isinstance(slot_value, nmdc.QuantityValue):
+                # If the `has_unit` value is `None`, use "" instead of "None".
+                unit = "" if slot_value.has_unit is None else str(slot_value.has_unit)
                 properties.append(
                     {
                         "attribute": attribute,
@@ -207,7 +209,7 @@ class BiosampleMapper(nmdc.Biosample):
                         "maximum_numeric_value": slot_value.has_maximum_numeric_value,
                         "minimum_numeric_value": slot_value.has_minimum_numeric_value,
                         "numeric_value": slot_value.has_numeric_value,
-                        "unit": str(slot_value.has_unit),
+                        "unit": unit,
                     }
                 )
             # If the value is a ControlledIdentifiedTermValue, map the term ID to the property's

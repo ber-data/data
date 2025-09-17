@@ -169,10 +169,7 @@ class BiosampleMapper(nmdc.Biosample):
         return data_collections
 
     def get_properties(self) -> list[dict]:
-        """Returns a list of properties derived from the underlying Biosample.
-
-        TODO: Add support for additional properties.
-        """
+        """Returns a list of properties derived from the underlying Biosample."""
         properties = []
 
         def _append_property(slot_definition: SlotDefinition, slot_value: Any) -> None:

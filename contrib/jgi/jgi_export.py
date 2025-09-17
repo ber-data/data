@@ -241,7 +241,7 @@ def gold_database_to_json(schema_version: str = None, geo_only: bool = False):
     else:
         schema = None
 
-    rel_dir = Path("../../jgi")
+    rel_dir = Path("../../ingest/jgi")
     basename = "jgi.json"
 
     output_file = (Path(__file__).parent / rel_dir / basename).resolve()

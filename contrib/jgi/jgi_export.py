@@ -1,10 +1,8 @@
-import os
-import unittest
+import argparse
 import logging
-# import sys
-from typing import Dict #, Optional
+from pathlib import Path
+from typing import Dict
 import psycopg2
-from psycopg2 import OperationalError
 import pandas as pd
 import json
 import httpx
@@ -14,10 +12,15 @@ from jsonschema import validate, ValidationError
 
 # pip install psycopg2-binary
 
-logger = logging.getLogger(__name__)
+# To run:
+#
+# python -m jgi_export --validate-with v0.1.0-alpha.12 --geo-only --log-level INFO
+# python -m jgi_export --log-level INFO
 
 # JGI Genome Portal documentation: https://sites.google.com/a/lbl.gov/genome-portal/home/documentation/look-up-for-portals
 # The Genome Portal will be decommissioned soon, but the URLs will be mapped to Advanced Search queries in the JGI Data Portal.
+
+logger = logging.getLogger(__name__)
 
 DBNAME: str = "n4l_corpus"
 DBUSER: str = "n4luser"
@@ -73,27 +76,22 @@ def convert_record_to_json(schema, rec: dict):
             ] if pd.notna(n)
         ],
         "ber_data_source": "JGI",
-        "coordinates": (
-            {
-                "latitude": coord_lat,
-                "longitude": coord_lon,
-            }
-        ) if has_coords else "null",
+        "coordinates": {"latitude": coord_lat, "longitude": coord_lon} if has_coords else None,
         "description": rec.get("study_desc"),
         "entity_type": ["project"],
         "part_of_collection": [
             {
                 "id": str(rec.get("its_proposal_id")),
-                "title": "ITS Proposal ID", "url": f"http://genome.jgi.doe.gov/portal/lookup?keyName=proposalId&keyValue={rec.get("its_proposal_id")}&groupOnly=1&app=Info"
+                "title": "ITS Proposal ID", "url": f"http://genome.jgi.doe.gov/portal/lookup?keyName=proposalId&keyValue={rec.get('its_proposal_id')}&groupOnly=1&app=Info"
             } if pd.notna(rec.get("its_proposal_id")) else None,
             {
                 "id": str(rec.get("its_sequencing_project_id")),
-                "title": "ITS Sequencing Project ID", "url": f"http://genome.jgi.doe.gov/portal/lookup?keyName=jgiProjectId&keyValue={rec.get("its_sequencing_project_id")}&app=Info"
+                "title": "ITS Sequencing Project ID", "url": f"http://genome.jgi.doe.gov/portal/lookup?keyName=jgiProjectId&keyValue={rec.get('its_sequencing_project_id')}&app=Info"
             } if pd.notna(rec.get("its_sequencing_project_id")) else None,
             {
                 # JGI User Project ID
                 "id": str(rec.get("pmo_project_id")),
-                "title": "PMO Project ID", "url": f"https://data.jgi.doe.gov/search?q={rec.get("pmo_project_id")}"
+                "title": "PMO Project ID", "url": f"https://data.jgi.doe.gov/search?q={rec.get('pmo_project_id')}"
             } if pd.notna(rec.get("pmo_project_id")) else None,
         ],
         "properties": [
@@ -122,38 +120,20 @@ def convert_record_to_json(schema, rec: dict):
     json_obj["part_of_collection"] = [i for i in json_obj["part_of_collection"] if i]
     json_obj["properties"] = [
         i for i in json_obj["properties"]
-        if i.get("value") not in [None, ""] and i.get("value") == i.get("value")  # remove NaN
-           or i.get("numeric_value") not in [None, ""]
+        if ((i.get("value") not in (None, "") and i.get("value") == i.get("value"))  # not NaN
+            or (i.get("numeric_value") not in (None, "")))
     ]
 
-    # Validate the JSON object against the schema.
-    if validate_json(schema, json_obj):
-        logger.debug("Record validates!")
-    else:
-        logger.debug("Record failed validation!")
+    # If a schema was provided, validate the JSON object.
+    if schema:
+        if validate_json(schema, json_obj):
+            logger.debug("Record validates!")
+        else:
+            logger.debug("Record failed validation!")
 
     return json_obj
 
-def csv_to_json(schema, csv_filename, out_filename = None):
-    if not out_filename:
-        out_filename = csv_filename + ".json"
-
-    df = pd.read_csv(csv_filename)
-
-    json_objects: list = []
-
-    for _, row in df.iterrows():
-        json_objects.append(convert_record_to_json(schema, row.to_dict()))
-
-    # Save to file if requested
-    if out_filename:
-        with open(out_filename, "w") as f:
-            json.dump(json_objects, f, indent=2)
-
-    return
-
-
-def load_schema(schema_path) -> Dict:
+def load_schema(schema_path: str) -> Dict:
     """Load the JSON schema from file."""
     assert isinstance(schema_path, str), "Schema path has not been set"
     schema = None
@@ -175,8 +155,7 @@ def load_schema(schema_path) -> Dict:
         raise e
 
 
-
-def export_json_from_gold_limit(schema, base_filename="jgi_gold_seqprojects.json", geo_only = False, max_file_size = 25 * 1024 * 1024):
+def export_gold_as_json_fies(schema: str = None, output_file: Path = None, geo_only: bool = False, max_file_size: int = 25 * 1024 * 1024, json_indent: int = 0, json_rec_delim: str = ",\n"):
     conn = None
     try:
         conn = psycopg2.connect(database=DBNAME, user=DBUSER, password=DBPASS, host=DBHOST)
@@ -210,8 +189,8 @@ def export_json_from_gold_limit(schema, base_filename="jgi_gold_seqprojects.json
             if current_file:
                 current_file.write("\n]\n")
                 current_file.close()
-            out_name = f"{os.path.splitext(base_filename)[0]}_{file_index:05d}.json"
-            current_file = open(out_name, "w")
+            output_shard_file = output_file.with_name(f"{output_file.stem}_{file_index:05d}.json")
+            current_file = open(output_shard_file, "w")
             current_file.write("[\n")
             first_record_in_file = True
             file_index += 1
@@ -225,15 +204,15 @@ def export_json_from_gold_limit(schema, base_filename="jgi_gold_seqprojects.json
         for i, record in enumerate(cursor.fetchall(), start=1):
             rec_dict = dict(zip(colnames, record))
 
-            if i % 100 == 0 or i == total:
-                pct = (i / total) * 100
+            if i % 500 == 0 or i == total:
+                pct = (i / total) * 500
                 logger.info(f"Processed {i}/{total} records ({pct:.1f}%)")
 
             json_obj = convert_record_to_json(schema, rec_dict)
 
             if not first_record_in_file:
-                current_file.write(",\n")
-            current_file.write(json.dumps(json_obj, indent=2))
+                current_file.write(json_rec_delim)
+            current_file.write(json.dumps(json_obj, indent=json_indent))  # Q: Should this also do: ", ensure_ascii=False" ??
             first_record_in_file = False
             current_file.flush()
 
@@ -249,18 +228,52 @@ def export_json_from_gold_limit(schema, base_filename="jgi_gold_seqprojects.json
         if conn:
             conn.close()
 
-def test_gold_database_to_json():
-    logger.setLevel(logging.INFO)  # prints out export status
 
-    tag = "v0.1.0-alpha.12"
+def gold_database_to_json(schema_version: str = None, geo_only: bool = False):
 
-    if not tag:
-        schema_uri = "https://raw.githubusercontent.com/ber-data/bertron-schema/refs/heads/main/src/schema/jsonschema/bertron_schema.json"
+    if schema_version:
+        if schema_version == "main":
+            schema_uri = "https://raw.githubusercontent.com/ber-data/bertron-schema/refs/heads/main/src/schema/jsonschema/bertron_schema.json"
+        else:
+            schema_uri = f"https://raw.githubusercontent.com/ber-data/bertron-schema/refs/tags/{schema_version}/src/schema/jsonschema/bertron_schema.json"
+
+        schema = load_schema(schema_uri)
     else:
-        schema_uri = f"https://raw.githubusercontent.com/ber-data/bertron-schema/refs/tags/{tag}/src/schema/jsonschema/bertron_schema.json"
+        schema = None
 
-    schema = load_schema(schema_uri)
-    export_json_from_gold_limit(schema, "../../jgi/jgi.json")
+    rel_dir = Path("../../jgi")
+    basename = "jgi.json"
 
-if __name__ == '__main__':
-    unittest.main()
+    output_file = (Path(__file__).parent / rel_dir / basename).resolve()
+
+    export_gold_as_json_fies(schema, output_file, geo_only)
+
+
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(prog="jgi_export")
+    parser.add_argument("--log-level", default="INFO")
+
+    parser.add_argument(
+        "--validate-with",
+        default=None,
+        help="Schema git tag (e.g., 'main', 'v0.1.0-alpha.12'). If omitted, will not validate JSON output.",
+    )
+
+    parser.add_argument("--geo-only", action="store_true", default=False,
+                      help="Only export rows with coordinates (default: off)")
+
+    args = parser.parse_args(argv)
+
+    logging.basicConfig(
+        level=getattr(logging, args.log_level.upper(), logging.INFO),
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    )
+
+    gold_database_to_json(args.validate_with, args.geo_only)
+
+    return 0
+
+
+if __name__ == "__main__":
+    import sys
+    raise SystemExit(main(sys.argv[1:]))

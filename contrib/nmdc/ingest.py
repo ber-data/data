@@ -299,7 +299,7 @@ class Dumper:
     @staticmethod
     def dump_entities_to_json_files(
         entities: list[bertron.Entity],
-        output_dir: Path = Path("../../ingest/nmdc/"),  # TODO: Remove default value
+        output_dir: Path,
         target_file_size_bytes: int = 25_000_000,
     ) -> None:
         """Dump the given list of `bertron.Entity` instances to JSON files."""

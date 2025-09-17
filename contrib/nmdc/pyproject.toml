@@ -1,0 +1,47 @@
+[project]
+name = "ingest"
+version = "0.1.0"
+description = "Fetch NMDC data, transform it into BERtron-compliant data, and write it to a JSON file."
+readme = "./README.md"
+requires-python = ">=3.12"
+dependencies = [
+    # We use httpx as an HTTP client, for fetching data from HTTP APIs.
+    "httpx >= 0.28.1",
+
+    # We use `bertron-schema` to validate that Python objects conform to the BERtron schema.
+    "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@4ee7dfda1f53e7c7a668e417bdc921be103e1c8a",
+
+    # We use `nmdc-schema` to validate that Python objects conform to the NMDC schema.
+    "nmdc-schema == 11.10.0",
+
+    # We use `typer` as a CLI application framework, and we use `rich` to format
+    # console output. Installing `typer` installs `rich` automatically, but I don't
+    # like importing transitive dependencies, so I list `rich` here explicitly.
+    # Docs: https://typer.tiangolo.com/
+    "typer == 0.17.4",
+    "rich == 14.1.0",
+
+    # We depend on the `typing-extensions` package's `Annotated` class,
+    # which we use to define metadata on CLI arguments/options.
+    "typing-extensions >= 4.15.0",
+]
+
+[dependency-groups]
+dev = [
+    # We use `mypy` for static type checking.
+    "mypy",
+    # We use `pyinstrument` for performance profiling.
+    # Docs: https://pyinstrument.readthedocs.io/en/latest/guide.html#profile-a-python-cli-command
+    "pyinstrument>=5.1.1",
+    # We use `ruff` for linting and formatting of Python source code.
+    "ruff >= 0.13.0",
+]
+
+[project.urls]
+Repository = "https://github.com/ber-data/data"
+Documentation = "https://github.com/ber-data/data/tree/main/contrib/nmdc/README.md"
+
+[tool.mypy]
+# Make it so, when someone runs `$ uv run mypy`, these default CLI options are used.
+# Reference: https://mypy.readthedocs.io/en/stable/config_file.html
+files = "."

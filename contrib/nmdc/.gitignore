@@ -1,0 +1,6 @@
+# Ignore the Python virtual environment in this directory.
+/.venv
+
+# Ignore tool cache directories.
+/.mypy_cache
+/.ruff_cache

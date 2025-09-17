@@ -11,6 +11,7 @@ The ESS-DIVE ingest pipeline fetches public datasets from the ESS-DIVE API and c
 - **`fetch_essdive_entities.py`** - Main ETL script for fetching and converting ESS-DIVE data
 - **`schema_validator.py`** - Schema validation utilities using Pydantic models
 - **`validate_essdive_ingest.py`** - Standalone validation tool for existing JSON files
+- **`check_pydantic_models.py`** - Validation script to verify Pydantic model compatibility
 - **`test_workflow.py`** - Comprehensive test suite for the entire pipeline
 - **`requirements.txt`** - Python dependencies
 
@@ -40,17 +41,19 @@ python validate_essdive_ingest.py essdive_data_*.json
 ### ETL Pipeline (`fetch_essdive_entities.py`)
 
 **Core Functionality:**
-- Fetches all public datasets from ESS-DIVE API
+- Memory-efficient page-by-page processing of ESS-DIVE API data
 - Converts datasets to Bertron entities using Pydantic models
 - Handles both site entities (with coordinates) and dataset entities
 - Automatic file splitting to maintain ~25MB file size limits
 - Built-in schema validation using Pydantic models
+- Unique entity ID generation with sequence numbers for duplicate coordinates
+- Debug metadata output for troubleshooting
 
 **CLI Options:**
 ```bash
 usage: fetch_essdive_entities.py [-h] [--output OUTPUT] [--token TOKEN] 
                                  [--page-size PAGE_SIZE] [--dry-run-pages DRY_RUN_PAGES] 
-                                 [--validate] [--no-validate]
+                                 [--validate] [--no-validate] [--debug-metadata]
 
 options:
   -h, --help            show this help message and exit
@@ -65,12 +68,15 @@ options:
                         Test mode: only fetch specified number of pages (useful for testing)
   --validate            Validate output files against schema (default: True)
   --no-validate         Skip validation of output files
+  --debug-metadata      Save dataset metadata to debug file for inspection
 ```
 
 **Output Format:**
 - Files named with prefix and sequential numbers: `essdive_00001.json`, `essdive_00002.json`, etc.
+- Debug metadata files: `essdive_00001_metadata.json` (when using `--debug-metadata`)
 - JSON arrays containing Bertron entities
 - File size limited to ~25MB with complete records only
+- Memory-efficient processing: processes datasets page-by-page without loading all into memory
 - Automatic validation using Pydantic models
 
 ### Schema Validation (`schema_validator.py`)
@@ -116,7 +122,65 @@ python validate_essdive_ingest.py essdive_*.json
 python validate_essdive_ingest.py --verbose essdive_00001.json
 ```
 
+### Pydantic Model Validation (`check_pydantic_models.py`)
+
+**Purpose:**
+- Verify Pydantic model compatibility and entity creation
+- Test that the ETL pipeline can successfully create Bertron entities
+- Validate model serialization and data structure integrity
+
+**Usage:**
+```bash
+# Run Pydantic model compatibility check
+python check_pydantic_models.py
+```
+
+**Expected Output:**
+```
+✓ Successfully imported EssDiveEntityFetcher
+✓ Successfully created EssDiveEntityFetcher instance
+✓ Successfully created site entity with Pydantic model
+✓ Successfully created dataset entity with Pydantic model
+✓ All tests passed! Entity creation working correctly
+```
+
 ## Data Transformation
+
+### Unique Entity ID Generation
+
+The pipeline generates unique entity IDs to handle datasets with multiple spatial coverage areas:
+
+**Site Entity ID Format:**
+- Single spatial coverage: `{dataset_version}#{latitude},{longitude}`
+- Multiple spatial coverage: `{dataset_version}#{latitude},{longitude}#{sequence_number}`
+- Example: `ess-dive-e976198fe417dbb-20250916T220937159#46.7322,-117.1805#0`
+
+This ensures uniqueness even when:
+- The same coordinates appear multiple times in a dataset
+- Multiple datasets have overlapping coordinates
+- A dataset has many spatial coverage areas
+
+### Debug and Troubleshooting
+
+**Debug Metadata Output:**
+```bash
+# Generate debug metadata file alongside entity output
+python fetch_essdive_entities.py --debug-metadata --output debug_run --dry-run-pages 1
+
+# Creates both:
+# - debug_run_00001.json (entities)
+# - debug_run_00001_metadata.json (full dataset metadata)
+```
+
+The debug metadata file contains the complete dataset metadata from ESS-DIVE API, useful for:
+- Understanding why certain datasets generate many entities
+- Debugging spatial coverage parsing issues
+- Analyzing dataset structure and content
+
+**Memory Efficiency:**
+- Processes datasets page-by-page instead of loading all into memory
+- Writes entity files incrementally during processing
+- Scales to handle large dataset collections without memory constraints
 
 ### Site Entities (with spatial coverage)
 
@@ -124,7 +188,7 @@ ESS-DIVE datasets with spatial coverage are converted to site entities:
 
 ```json
 {
-  "id": "ess-dive-pid",
+  "id": "ess-dive-pid#37.0,-122.0#0",
   "entity_type": ["site"],
   "ber_data_source": "ESS-DIVE",
   "name": "Dataset Name",
@@ -227,6 +291,9 @@ Note: Authentication is optional for public datasets but may be required for rat
 # Quick test with minimal data
 python fetch_essdive_entities.py --dry-run-pages 1 --page-size 5 --output test
 
+# Debug run with metadata output
+python fetch_essdive_entities.py --dry-run-pages 1 --page-size 3 --debug-metadata --output debug_test
+
 # Larger test run
 python fetch_essdive_entities.py --dry-run-pages 5 --output sample_data
 
@@ -272,17 +339,24 @@ data/
 │   ├── validate_essdive_ingest.py
 │   └── test_workflow.py
 └── ingest/ess-dive/           # Output directory
-    ├── essdive_00001.json     # Generated files
+    ├── essdive_00001.json     # Generated entity files
     ├── essdive_00002.json
+    ├── essdive_00001_metadata.json  # Debug metadata (optional)
     └── ...
 ```
 
 ### File Naming Convention
 
-- **Prefix**: Specified by `--output` parameter (default: "essdive")
-- **Numbering**: Sequential 5-digit numbers: `00001`, `00002`, etc.
-- **Extension**: Always `.json`
-- **Example**: `essdive_00001.json`, `custom_prefix_00001.json`
+- **Entity Files**:
+  - **Prefix**: Specified by `--output` parameter (default: "essdive")
+  - **Numbering**: Sequential 5-digit numbers: `00001`, `00002`, etc.
+  - **Extension**: Always `.json`
+  - **Example**: `essdive_00001.json`, `custom_prefix_00001.json`
+
+- **Debug Metadata Files** (when using `--debug-metadata`):
+  - **Format**: `{prefix}_{number}_metadata.json`
+  - **Example**: `essdive_00001_metadata.json`, `debug_00001_metadata.json`
+  - **Content**: Full dataset metadata from ESS-DIVE API
 
 ## Schema Compliance
 
@@ -298,9 +372,35 @@ All generated entities conform to the [Bertron Schema](https://github.com/ber-da
 
 ### Debug Mode
 
-Use dry run for debugging:
+Use dry run with debug metadata for troubleshooting:
 ```bash
-python fetch_essdive_entities.py --dry-run-pages 1 --page-size 2 --output debug
+# Debug with metadata output to understand dataset structure
+python fetch_essdive_entities.py --dry-run-pages 1 --page-size 2 --debug-metadata --output debug
+
+# Check for duplicate entity IDs
+python -c "
+import json
+with open('debug_00001.json', 'r') as f:
+    entities = json.load(f)
+ids = [e['id'] for e in entities]
+print(f'Total: {len(entities)}, Unique: {len(set(ids))}, Duplicates: {len(ids) - len(set(ids))}')
+"
+
+# Examine debug metadata
+python -c "
+import json
+with open('debug_00001_metadata.json', 'r') as f:
+    metadata = json.load(f)
+print(f'Debug datasets: {len(metadata)}')
+for i, dataset in enumerate(metadata):
+    print(f'Dataset {i}: {dataset.get(\"@id\", \"Unknown ID\")}')
+    if 'spatialCoverage' in dataset:
+        coverage = dataset['spatialCoverage']
+        if isinstance(coverage, list):
+            print(f'  Spatial coverage areas: {len(coverage)}')
+        else:
+            print(f'  Single spatial coverage area')
+"
 ```
 
 ### Test Validation

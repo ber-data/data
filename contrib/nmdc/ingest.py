@@ -264,7 +264,7 @@ class BiosampleMapper(nmdc.Biosample):
             self.class_name
         ):
             slot_value = getattr(self, slot_definition.name, None)
-            if not slot_value:
+            if slot_value in (None, [], {}):
                 continue
             _append_property(slot_definition, slot_value)
 

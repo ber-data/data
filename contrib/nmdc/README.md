@@ -10,7 +10,7 @@ graph LR
 ## Usage
 
 ```sh
-python ingest.py --help
+uv run python ingest.py --help
 ```
 
 <!-- 

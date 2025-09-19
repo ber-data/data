@@ -264,7 +264,7 @@ class BiosampleMapper(nmdc.Biosample):
             self.class_name
         ):
             slot_value = getattr(self, slot_definition.name, None)
-            if not slot_value:
+            if slot_value in (None, [], {}):
                 continue
             _append_property(slot_definition, slot_value)
 
@@ -334,7 +334,7 @@ class Dumper:
                     buffer.write(Token.OPEN.value)
 
                 # Write this entity to the buffer.
-                buffer.write(entity.model_dump_json(indent=2))
+                buffer.write(entity.model_dump_json(exclude_none=True, indent=2))
                 num_entities_in_buffer += 1
 
                 # If either (a) this was the final entity in our list or (b) the buffer size is

@@ -1,4 +1,5 @@
 .DS_Store
+emsl/emsl_data_from_onedrive/
 
 # IDE files.
 .idea/
@@ -6,3 +7,4 @@
 
 # Python virtual environments.
 .venv/
+

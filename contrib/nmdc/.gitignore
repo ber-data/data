@@ -4,3 +4,7 @@
 # Ignore tool cache directories.
 /.mypy_cache
 /.ruff_cache
+
+# Ignore `cache.json` file (commonly-used filename for caching
+# the fetched NMDC data between runs of the script).
+/cache.json

@@ -334,7 +334,11 @@ class Dumper:
                     buffer.write(Token.OPEN.value)
 
                 # Write this entity to the buffer.
-                buffer.write(entity.model_dump_json(indent=2))
+                buffer.write(
+                    entity.model_dump_json(
+                        exclude_none=True, exclude_unset=True, indent=2
+                    )
+                )
                 num_entities_in_buffer += 1
 
                 # If either (a) this was the final entity in our list or (b) the buffer size is

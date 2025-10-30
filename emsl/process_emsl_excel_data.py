@@ -122,6 +122,9 @@ class EMSLDataProcessor:
                         bertron_entity = self.transformer.transform_to_bertron_schema(
                             raw_entity, excel_file, structure_name
                         )
+
+                        if bertron_entity is None:
+                            continue  # Skip this entity
                        
                         if self.validator:
                             validation_result = self.validator.validate_entity(bertron_entity)
@@ -273,6 +276,11 @@ class DataTransformer:
  
         # Transform all attributes to properties
         properties = self._transform_attributes_to_properties(raw_entity)
+
+        # Filter out entities with no properties or auto-generated names
+        if not properties or (entity.get("name", "").startswith("unknown_sample_")):
+            return None  # Don't create entity
+
         entity["properties"] = properties
  
         return entity
@@ -381,9 +389,18 @@ class DataTransformer:
                 continue
            
             # Skip N/A values
-            if str(value).upper() in ['N/A', 'NA', 'NULL', 'NONE', 'NaN', 'NAN']:
-                continue
+            # if str(value).upper() in ['N/A', 'NA', 'NULL', 'NONE', 'NaN', 'NAN', 'SELECT VALUE']:
+            #     continue
  
+            # Normalize the value first
+            value_str = str(value).strip().lower()
+
+            # Then do all comparisons on the normalized version
+            if (value_str in ['n/a', 'na', 'null', 'none', 'nan'] or 
+                value_str.startswith('select ') or 
+                'select' in value_str and ('value' in value_str or 'type' in value_str)):
+                continue
+            
             # Create base property structure
             property_dict = {
                 "attribute": {
